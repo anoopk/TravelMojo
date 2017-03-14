@@ -1,0 +1,65 @@
+﻿<div style="padding:60px">
+  <script type="text/ng-template" id="group-template.html">
+    <div class="panel-heading">
+      <h4 class="panel-title" style="color:#fa39c3">
+        <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+          <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+            Some text
+          </span>
+        </a>
+      </h4>
+    </div>
+    <div class="panel-collapse collapse" uib-collapse="!isOpen">
+      <div class="panel-body" style="text-align: right" ng-transclude></div>
+    </div>
+  </script>
+  <p>
+    <button type="button" class="btn btn-info btn-sm" ng-click="changeTab($event)">Description</button>
+	<button type="button" class="btn btn-info btn-sm" ng-click="changeTab($event)">Itinerary</button>	
+	<button type="button" class="btn btn-info btn-sm" ng-click="changeTab($event)">Departures</button>
+	<button type="button" class="btn btn-info btn-sm" ng-click="changeTab($event)">Conversations</button>
+	<button type="button" class="btn btn-info btn-sm" ng-click="checkModel()">Model</button>
+    <!--<button type="button" class="btn btn-default btn-sm" ng-click="status.isFirstDisabled = ! status.isFirstDisabled">Enable / Disable first panel</button>-->
+  </p>
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group ng-cloak class="panel-info" is-open="items['description']" is-disabled="status.isFirstDisabled">
+		<div class="content-grid" ng-include="'tripDetails/description.html'"></div>	
+		<!--<form sf-schema="schema" sf-form="forms['description'].form" sf-model="model"></form>-->
+    </div>
+    <div uib-accordion-group ng-cloak class="panel-info" is-open="items['itinerary']" is-disabled="items['itinerary'].disabled">
+		<div class="content-grid" ng-include="'tripDetails/itinerary.html'"></div>	  	
+    </div>		
+    <div uib-accordion-group ng-cloak class="panel-info" is-open="items['departures']" is-disabled="status.isFirstDisabled">
+		<div class="content-grid" ng-include="'tripDetails/departures.html'"></div>
+	</div>
+
+    </div>	
+    <div uib-accordion-group ng-cloak class="panel-info" is-open="items['conversations']" is-disabled="items['conversations'].disabled">
+      <div style="padding-top: 2%; padding-left: 10%; z-index:1050">
+	<div style="max-height:100%;overflow:auto;" id="notificationList">
+	<md-list>
+		<md-list-item class="md-3-line contact-item" id="notification" ng-repeat="notification in notifications">
+			<img ng-src="http://lorempixel.com/50/50/people/?1/" class="md-avatar" alt="{{user.name}}" />
+			<div class="md-list-item-text compact" layout="column">
+				<div>
+					<p style="padding-left: 0%;" class="text-primary"><strong>{{notification.name}}</strong>
+					<a href="#">
+					<i style="padding-left: 0%;" class="fa fa-envelope-square fa-2x text-success"></i>
+					</a>										
+					<a ng-show=(notification.unread) href="#">
+					<i style="padding-left: 2%;" class="fa fa-check-square fa-2x text-danger"></i>
+					</a>
+					</p>
+				</div>
+				<p style="width: 20%;"><small>{{notification.name}} on {{notification.name}}</small></p>				
+				<p><small>{{notification.date}}</small></p>				
+			</div>
+			<md-divider style="width: 25%;" ng-if="!$last"></md-divider>			
+		</md-list-item>	
+	</md-list>
+	</div>	
+</div>
+
+    </div>	
+  </uib-accordion>
+</div>

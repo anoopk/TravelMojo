@@ -1,0 +1,63 @@
+[{
+	"schema": {
+		"type": "object",
+		"title": "Departures",
+		"required": [
+			"name",
+			"date"
+		],
+		"properties": {
+			"departure": {
+				"title": "Departures", 
+				"type": "array",
+				"maxItems": 10,
+				"items": {
+					"type": "object",
+					"properties": {
+						"date": {
+							"title": "Date",
+							"type": "string",
+							"minLength": 8
+						},
+						"cost": {
+							"title": "Cost",
+							"type": "number"
+						},
+						"comment": {
+							"title": "Comment",
+							"type": "string",
+							"maxLength": 200
+						}
+					},
+					"required": [
+						"name",
+						"comment"
+					]
+				}
+			}
+		}
+	},
+	"form": [
+	{
+		"type": "section",
+		"htmlClass": "row",		
+		"items": [
+		{
+			"type": "section",
+			"htmlClass": "col-xs-6",
+			"items": ["departure[].date"]
+		},
+		{
+			"type": "section",
+			"htmlClass": "col-xs-6",
+			"items": [
+				"departure[].cost"
+			]
+		}
+		]},		
+		{
+			"key": "departure[].comment",
+			"type": "textarea"
+		}
+	]
+}]

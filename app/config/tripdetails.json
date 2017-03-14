@@ -1,0 +1,226 @@
+[{
+	"schema": {
+		"type": "object",
+		"required": [
+			"name",
+			"length"
+		],
+		"properties": {
+			"name": {
+				"title": "Name",
+				"description": "Give the trip an enticing name",
+				"type": "string",
+				"pattern": "^[^/]*$",
+				"minLength": 8
+			},
+			"email": {
+				"title": "Email",
+				"type": "string",
+				"pattern": "^\\S+@\\S+$",
+				"description": "This is to allow a customer to get in touch with you directly"
+			},
+			"details": {
+				"type": "string",
+				"format": "html",
+				"title": "Description"
+			},
+			"cost": {
+				"title": "Trip Cost",
+				"type": "number"
+			},
+			"supplement": {
+				"title": "Single Supplement",
+				"type": "number"
+			},
+			"length": {
+				"title": "Number of days",
+				"type": "number"
+			},			
+			"size": {
+				"title": "Group Size",
+				"type": "string"
+			},						
+			"meets": {
+				"title": "Tour Meets",
+				"type": "string",
+				"pattern": "^[^/]*$",
+				"minLength": 3				
+			},
+			"ends": {
+				"title": "Tour Ends",
+				"type": "string",
+				"pattern": "^[^/]*$",
+				"minLength": 3				
+			},			
+			"favorite": {
+				"title": "Favorite",
+				"type": "string",
+				"enum": [
+					"undefined",
+					"null",
+					"NaN"
+				]
+			},
+			"departures": {
+				"type": "array",
+				"title": "Departures",
+				"items": {
+					"type": "string",
+					"title": "Date and cost"
+				}				
+			},
+			"date": {
+				"title": "Date of party",
+				"type": "string",
+				"format": "date"
+			},
+			"permission": {
+				"type": "string",
+				"enum": [
+					"Public",
+					"Private"
+				]
+			}
+		}
+	},
+	"form": [{
+			"type": "fieldset",
+			"title": "Trip Details",
+			"items": [{
+				"type": "tabs",
+				"tabs": [{
+					"title": "Description",
+					"items": [{
+								"type": "help",
+								"helpvalue": "<div class=\"alert alert-info\">Enter the details of the trip here</div>"
+							  },
+							  {
+								"type": "section",
+								"htmlClass": "row",
+								"items": [
+								  {
+									"type": "section",
+									"htmlClass": "col-xs-6",
+									"items": [
+									  "name"
+									]
+								  },
+								  {
+									"type": "section",
+									"htmlClass": "col-xs-6",
+									"items": [
+									  "email"
+									]
+								  }
+								]
+							  },
+							  {
+								"type": "section",
+								"htmlClass": "row",
+								"items": [
+								  {
+									"type": "section",
+									"htmlClass": "col-xs-4",
+									"items": [
+									  "cost"
+									]
+								  },
+								  {
+									"type": "section",
+									"htmlClass": "col-xs-4",
+									"items": [
+									  "supplement"
+									]
+								  },								  
+								  {
+									"type": "section",
+									"htmlClass": "col-xs-4",
+									"items": [
+									  "size"
+									]
+								  }
+								]
+							  },							  
+							  {
+								"type": "section",
+								"htmlClass": "row",
+								"items": [
+								  {
+									"type": "section",
+									"htmlClass": "col-xs-4",
+									"items": [
+									  "meets"
+									]
+								  },
+								  {
+									"type": "section",
+									"htmlClass": "col-xs-4",
+									"items": [
+									  "ends"
+									]
+								  },
+								  {
+									"type": "section",
+									"htmlClass": "col-xs-4",
+									"items": [
+									  "length"
+									]
+								  }								  
+								]
+							  },							  							  
+							  {
+								"key": "details",
+								"type": "textarea",
+								"placeholder": "Describe the trip in as much detail as possible"
+							  },
+							  {
+								"key": "permission",
+								"style": {
+								  "selected": "btn-success",
+								  "unselected": "btn-default"
+								},
+								"type": "radiobuttons",
+								"title": "This trip is"
+							  },							  
+							  {
+								"type": "submit",
+								"style": "btn-info",
+								"title": "OK"
+							  }
+							]
+				}, 
+				{
+					"title": "Departures",
+					"items": [
+						"departures"
+					]
+				}, {
+					"title": "Itinerary",
+					"key": "departureDates",
+						"add": "New",
+						"style": {
+						  "add": "btn-success"
+						},					
+					"items": [{
+						"key": "favorite",
+						"feedback": false
+					}]
+				},{
+					"title": "Notifications",
+					"items": [{
+						"key": "name",
+						"placeholder": "Check the console",
+						"onChange": "log(modelValue)",
+						"feedback": "{'glyphicon': true, 'glyphicon-ok': hasSuccess(), 'glyphicon-star': !hasSuccess() }"
+					}, {
+						"key": "favorite",
+						"feedback": false
+					}]
+				}]
+			}]
+		}, {
+			"type": "help",
+			"helpvalue": "<hr>"
+		}
+	]
+}]

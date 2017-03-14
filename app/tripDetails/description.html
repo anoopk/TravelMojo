@@ -1,0 +1,94 @@
+<div layout="column" ng-cloak>
+	<md-content layout-padding>
+		<form name="projectForm">
+		<div layout="row">
+			<md-input-container class="md-block">
+			<label>Title</label>
+			<input md-maxlength="30" required md-no-asterisk name="title" ng-model="trip.title">
+			<div ng-messages="projectForm.description.$error">
+			<div ng-message="required">This is required. Think up an enticing name for the trip</div>
+			<div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+			</div>
+			</md-input-container>	  
+			<md-input-container flex="50">
+				<label>URL</label>
+				<input name="url" ng-model="trip.url">
+			</md-input-container>
+			<md-input-container class="md-block">
+			<md-checkbox name="public" ng-model="trip.public" required>
+			  Public
+			</md-checkbox>			
+			</md-input-container>		
+			
+		</div>
+		<div layout="row">
+			<md-input-container class="md-block">
+			<label>Cost (USD)</label>
+			<input required type="number" step="50" name="cost" ng-model="trip.cost" min="100"
+			max="100000"/>
+			</md-input-container>
+			<md-input-container >
+			<label>Price (USD)</label>
+			<input required type="number" step="50" name="price" ng-model="trip.price"/>
+			</md-input-container>
+			<md-input-container >
+			<label>Single Supplement(USD)</label>
+			<input required type="number" step="10" name="ss" ng-model="trip.singleSupplement" max="4999"/>
+			</md-input-container>		
+			<md-input-container class="md-block">
+			<md-checkbox name="cost" ng-model="trip.suggestCost" required>
+			  Suggest price for this trip.
+			</md-checkbox>			
+			</md-input-container>		
+		</div>
+		<div layout="row">
+		  <md-input-container class="md-block">
+			<label>Meets in</label>
+			<input required name="meetsIn" ng-model="trip.meetsIn"
+				   minlength="3" maxlength="30"/>
+
+			<div ng-messages="projectForm.clientEmail.$error" role="alert">
+			  <div ng-message-exp="['required']">
+				Enter the name of the city where this tour meets.
+			  </div>
+			</div>
+		  </md-input-container>
+		  <md-input-container>
+			<label>Ends in</label>
+			<input required name="meetsIn" ng-model="trip.endIn"
+				   minlength="3" maxlength="30"/>
+
+			<div ng-messages="projectForm.clientEmail.$error" role="alert">
+			  <div ng-message-exp="['required']">
+				Enter the name of the city where this tour ends.
+			  </div>
+			</div>
+		  </md-input-container>				
+			<md-input-container>
+			<label>Group Size</label>
+			<input name="groupSize" ng-model="trip.groupSize"/>
+			</md-input-container>
+		</div>
+		<md-input-container class="md-block">
+		<label>Description</label>
+		<textarea ng-model="trip.description"></textarea>
+		</md-input-container>
+
+		<md-input-container class="md-block">
+        <md-checkbox name="tos" ng-model="trip.tos" required>
+          I accept the terms of service.
+        </md-checkbox>
+        <div ng-messages="projectForm.tos.$error" multiple md-auto-hide="false">
+          <div ng-message="required">
+            You must accept the terms of service before you can proceed.
+          </div>
+        </div>
+      </md-input-container>
+
+      <p style="font-size:.8em; width: 100%; text-align: center;">
+        Make sure to include <a href="https://docs.angularjs.org/api/ngMessages" target="_blank">ngMessages</a> module when using ng-message markup.
+      </p>
+    </form>
+  </md-content>
+
+</div>

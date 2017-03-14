@@ -1,0 +1,65 @@
+[{
+	"schema": {
+		"type": "object",
+		"title": "Itinerary",
+		"required": [
+			"name"
+		],
+		"properties": {
+			"itinerary": {
+				"title": "Itinerary", 
+				"type": "array",
+				"maxItems": 30,
+				"items": {
+					"type": "object",
+					"properties": {
+						"day": {
+							"title": "Day",
+							"type": "number"
+						},
+						"activities": {
+							"title": "Activities",
+							"type": "string"
+						},
+						"description": {
+							"title": "Description",
+							"type": "string",
+							"maxLength": 200
+						}
+					},
+					"required": [
+						"name",
+						"comment"
+					]
+				}
+			}
+		}
+	},
+	"form": [
+		{
+			"key": "Itinerary",
+			"add": "New",
+			"style": {
+			"add": "btn-success"
+		},
+		"type": "section",
+		"htmlClass": "row",		
+		"items": [
+		{
+			"type": "section",
+			"htmlClass": "col-xs-6",
+			"items": ["itinerary[].day"]
+		},
+		{
+			"type": "section",
+			"htmlClass": "col-xs-6",
+			"items": [
+				"itinerary[].aactivities"
+			]
+		}]},		
+		{
+			"key": "itinerary[].comment",
+			"type": "textarea"
+		}
+	]
+}]

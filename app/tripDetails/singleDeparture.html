@@ -1,0 +1,20 @@
+<div style="padding:3%" id="singleDay">
+	<div layout="column">
+	<md-content style="padding:2%" ng-cloak md-theme="forest">
+		<div layout="row" div class="md-inline-form">
+			<md-input-container >
+				<label>Price (USD)</label>
+				<input required type="number" step="50" name="price" ng-model="singleDeparture.price" min="0"/>
+			</md-input-container>
+			<md-input-container>
+				<label>Description</label>
+				<input type="text" name="description" ng-model="singleDeparture.description">
+			</md-input-container>	  
+			<md-datepicker required md-placeholder="Date" ng-model="singleDeparture.date" placeholder="What is special about this departure ?"></md-datepicker>	  
+		</div>	
+	</md-content>  
+	<div style="padding:1%">
+	<button type="button" class="btn btn-info btn-sm" ng-click="closeDialog()">Close</button>			
+	</div>	</div>	
+</div>
+	

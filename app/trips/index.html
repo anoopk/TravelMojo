@@ -1,0 +1,77 @@
+﻿<div class="form-container full-screen">
+	<div ng-if="!createNewFlag" style="height: 305px" ng-controller="CarouselDemoCtrl">
+		<div uib-carousel id="tripCarousel" active="active" interval="slideInterval" no-wrap="noWrapSlides">
+			<div uib-slide active="slide.active" ng-repeat="slide in slides track by slide.id" index="slide.id">	  
+				<i data-toggle="tooltip" title="Manage Trip" ng-show="retailer" id="cog" class="fa fa-cog fa-3x" aria-hidden="true" ng-mouseover="mouseenter()"></i>			
+				<a  data-toggle="tooltip" title="Tweet this" href="#" socialshare
+				socialshare-provider="twitter"
+				socialshare-text="720kb AngularJS Socialshare"
+				socialshare-hashtags="angularjs, angular-socialshare"
+				<i id="cog2" class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+				</a>			
+				<a href="#" socialshare
+				socialshare-provider="facebook"
+				socialshare-text="720kb AngularJS Socialshare"
+				socialshare-hashtags="angularjs, angular-socialshare"
+				socialshare-url="http://720kb.net">
+				<i id="cog3" class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+				</a>							
+				<a href="#" socialshare
+				socialshare-provider="google"
+				socialshare-text="720kb AngularJS Socialshare"
+				socialshare-hashtags="angularjs, angular-socialshare"
+				socialshare-url="http://720kb.net">
+				<i id="cog4" class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i>
+				</a>										
+				<img ng-src="{{slide.image}}" style="margin:auto;">
+				<h2><span>{{slide.name}}<br /></h2>
+				<h3><span>{{slide.description}}<br /></h3>
+				<h4><span>{{slide.departure}} for {{slide.cost}}<br /></h4>
+				<div ng-show="slide.cancelled" id="cancelnote" class="rubber">
+				<div>
+				  Cancelled
+				</div>				
+				</div>	
+				<div id="notificationsView">
+						<span ng-show="notificationIcon" id="notificationIcon" class="fa-stack" ng-click="toggleNotifications(slide)">
+							<i style="width: 100%;" class="fa fa-envelope fa-stack-1x fa-2x" aria-hidden="false"></i>
+							<i class="fa fa-stack-2x text-danger fa-1x">{{notificationCount}}</i>							
+						</span>
+						<md-list id="notificationsList" ng-show="notificationsVisible" style="background-color: white" id="notificationList" >
+						<div class="row">
+								<a href="#" ng-click="toggleNotifications(slide)" aria-label="Show/hide notifications">
+								Notifications
+								</a>
+							<md-divider style="width: 92%;" ng-if="!$last"></md-divider>
+							<div style="max-height:300px; overflow-y: scroll;" id="notificationListStart"></div>
+						</div>							
+					</md-list>					
+				</div>
+				<div class="carousel-caption">
+				</div>	
+				<div id="buttonpanel" ng-show="showButtons" ng-mouseleave="mouseleave()">
+				<div style="float: left; padding: 1px;">				
+					<button ng-if="!createNewFlag" type="button" data-toggle="tooltip" title="Create a new brand Trip" id="createNew" class="btn btn-success" ng-click="create()">Create Trip</button>										
+				</div>		   																
+				<div class="btn-group">
+					<button class="btn btn-warning" data-toggle="tooltip" title="Publish this Trip" ng-model="checkModel.publish" uib-btn-checkbox ng-click="toggleStatus('published', slide)"><i class="fa fa-external-link-square"></i>
+					<button class="btn btn-warning" data-toggle="tooltip" title="Mark this Trip as private" ng-model="checkModel.private" uib-btn-checkbox ng-click="toggleStatus('private', slide)"><i class="fa fa-bars"></i>				
+					<button class="btn btn-warning" data-toggle="tooltip" title="Cancel" ng-model="checkModel.cancelled" ng-click="toggleStatus('cancelled', slide)"><i class="fa fa-times-rectangle"></i>
+				</div>
+				<div class="btn-group">
+					<button class="btn btn-primary" data-toggle="tooltip" title="Edit Trip Details" ng-model="checkModel.edit" ng-click="actionInitiated('edit', slide)"><i class="fa fa-pencil"></i>
+					<button class="btn btn-primary" data-toggle="tooltip" title="Clone this Trip" ng-model="checkModel.clone" ng-click="actionInitiated('clone', slide)"><i class="fa fa-clone"></i>
+					<button class="btn btn-primary" data-toggle="tooltip" title="Attach" ng-model="checkModel.attach" ng-click="actionInitiated('attach', slide)"><i class="fa fa-envelope"></i>
+				</div>			
+			</div>
+		  </div>
+		</div>
+	</div>
+	<div ng-if="createNewFlag">
+		<div student="{ tripDetails=vm.myData[0]"></div><br/>
+		<div class="form-group">
+			<button class="btn btn-primary" ng-click="save()">Save</button>
+			<button class="btn btn-warning" ng-click="cancelChanges()">Cancel</button>
+		</div>		
+	</div>	
+</div>

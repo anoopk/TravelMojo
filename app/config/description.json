@@ -1,0 +1,193 @@
+[{
+	"schema": {
+		"type": "object",
+		"title": "Details",
+		"required": [
+			"name"
+		],
+		"properties": {
+			"name": {
+				"title": "Name",
+				"description": "Give the trip an enticing name",
+				"type": "string",
+				"pattern": "^[^/]*$",
+				"minLength": 8
+			},
+			"URL": {
+				"title": "URL",
+				"type": "string",
+				"pattern": "^\\S+@\\S+$",
+				"description": "Any other URL for this trip i.e a Facebook page."
+			},
+			"details": {
+				"type": "string",
+				"format": "html",
+				"title": "Description"
+			},
+			"price": {
+				"title": "Price",
+				"type": "number"
+			},
+			"cost": {
+				"title": "Cost",
+				"type": "number"
+			},			
+			"supplement": {
+				"title": "Single Supplement",
+				"type": "number"
+			},
+			"length": {
+				"title": "Number of days",
+				"type": "number"
+			},
+			"size": {
+				"title": "Group Size",
+				"type": "string"
+			},
+			"meets": {
+				"title": "Meets In",
+				"type": "string",
+				"pattern": "^[^/]*$",
+				"minLength": 3
+			},
+			"ends": {
+				"title": "Ends In",
+				"type": "string",
+				"pattern": "^[^/]*$",
+				"minLength": 3
+			},
+			"permission": {
+				"type": "string",
+				"enum": [
+					"Public",
+					"Private"
+				]
+			}
+		}
+	},
+	"description": {
+		"form": [
+	  {
+		"type": "section",
+		"htmlClass": "row",
+		"items": [
+		  {
+			"type": "section",
+			"htmlClass": "col-xs-6",
+			"items": [
+			  "name"
+			]
+		  },
+		  {
+			"type": "section",
+			"htmlClass": "col-xs-6",
+			"items": [
+			  "URL"
+			]
+		  }
+		]
+	  },
+	  {
+		"type": "section",
+		"htmlClass": "row",
+		"items": [
+		  {
+			"type": "section",
+			"htmlClass": "col-xs-3",
+			"items": [
+			  "cost"
+			]
+		  },
+		  {
+			"type": "section",
+			"htmlClass": "col-xs-3",
+			"items": [
+			  "supplement"
+			]
+		  },								  
+		{
+			"type": "section",
+			"htmlClass": "col-xs-3",
+			"items": [
+			  "price"
+			]
+		  },									  
+		  {
+			"type": "section",
+			"htmlClass": "col-xs-3",
+			"items": [
+			  "size"
+			]
+		  }
+		]
+	  },							  
+	  {
+		"type": "section",
+		"htmlClass": "row",
+		"items": [
+		  {
+			"type": "section",
+			"htmlClass": "col-xs-4",
+			"items": [
+			  "meets"
+			]
+		  },
+		  {
+			"type": "section",
+			"htmlClass": "col-xs-4",
+			"items": [
+			  "ends"
+			]
+		  },
+		  {
+			"type": "section",
+			"htmlClass": "col-xs-4",
+			"items": [
+			  "length"
+			]
+		  }								  
+		]
+	  },							  							  
+	  {
+		"key": "details",
+		"type": "textarea",
+		"placeholder": "Describe the trip in as much detail as possible"
+	  },
+	  {
+		"key": "permission",
+		"style": {
+		  "selected": "btn-success",
+		  "unselected": "btn-default"
+		},
+		"type": "radiobuttons",
+		"title": "This trip is"
+	  },							  							  
+	  {
+		"key": "comment",
+		"type": "textarea",
+		"placeholder": "Leave comments, suggestions or questions for the administrator. We will get back to you within 48 hours."
+	  }
+	]
+	},
+	"itinerary": {
+		"form": [{
+			"key": "comments",
+			"add": "New",
+			"style": {
+				"add": "btn-success"
+			},
+			"items": [
+				"comments[].name",
+				"comments[].email", {
+					"key": "comments[].public",
+					"type": "checkbox",
+					"title": "This trip is open to all."
+				}, {
+					"key": "comments[].comment",
+					"type": "textarea"
+				}
+			]
+		}]
+	}
+
+}]

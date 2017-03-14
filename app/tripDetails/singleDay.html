@@ -1,0 +1,22 @@
+<div style="padding:3%" id="singleDay">
+	<div layout="column">
+		<md-content ng-cloak>
+			<div layout="row" div class="md-inline-form">
+				<md-input-container >
+				<label>Day</label>
+				<input required type="number" step="1" name="day" ng-model="singleDay.day" min="0"/>
+				</md-input-container>
+				<md-input-container>
+				  <md-select multiple ng-model="singleDay.activites" placeholder="Activities">
+					<md-option ng-value="activity" ng-repeat="activity in activites">{{ activity.name }}</md-option>
+				  </md-select>
+				</md-input-container>		
+			<md-input-container>
+				<label>Description</label>
+				<input type="text" name="price" ng-model="singleDay.description" placeholder="Describe the day in detail">
+			</md-input-container>	  			
+			</div>	
+		</md-content>  
+		<button type="button" class="btn btn-info btn-sm" ng-click="closeDialog()">Close</button>						
+	</div>	
+</div>

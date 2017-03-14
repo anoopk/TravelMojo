@@ -1,0 +1,30 @@
+<div ng-cloak layout-gt-sm="row" layout="column">
+  <div flex-gt-sm="50" flex>
+    <md-content>
+      <md-list class="md-dense" flex>
+		<div ng-repeat="itinerary in trip.itinerary">
+			<md-list-item class="md-3-line">
+			  <div class="md-list-item-text">		  
+				<strong>Day {{ itinerary.day }}</strong>				
+				<button type="button" class="btn btn-info btn-sm" ng-click="editDay(itinerary.day)"><i class="fa fa-pencil"></i></button>			
+				<button type="button" class="btn btn-warning btn-sm" ng-click="cancelDay(itinerary.day)"><i class="fa fa-trash-o"></i></button>										
+				<p>{{itinerary.description}}</p>
+				<md-chips ng-model="itinerary.activities" readonly="true" md-removable="false" md-max-chips="10">
+					<md-chip-template>
+						{{$chip}}
+					</md-chip-template>
+				</md-chips>						
+			  </div>
+			</md-list-item>
+        <md-divider ></md-divider>			
+		</div>
+        </md-list-item>
+      </md-list>
+    </md-content>
+	<p class="footnote">
+		Go ahead and create a day by day itinerary of the trip. Add as much detail as you can in the description. Select as many activities as you like. Make it exciting. Make it juicy. Make is sellable.
+	</p>	
+	<button type="button" class="btn btn-info btn-sm" ng-click="addDay()">More</button>			
+  </div>
+</div>
+

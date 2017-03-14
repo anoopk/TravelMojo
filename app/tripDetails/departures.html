@@ -1,0 +1,25 @@
+<div ng-cloak layout-gt-sm="row" layout="column">
+  <div flex-gt-sm="50" flex>
+    <md-content>
+      <md-list class="md-dense" flex>
+		<div ng-repeat="departure in trip.departures">
+			<md-list-item class="md-3-line">
+			  <div class="md-list-item-text">		  
+					<p><strong>{{ departure.date | date:'shortDate' }}</strong> {{departure.description}}</p>
+					<button type="button" class="btn btn-primary">Price <span class="badge">{{departure.price}} USD</span></button>					
+					<button type="button" class="btn btn-info btn-sm" ng-click="editDeparture(departure.date)"><i class="fa fa-pencil"></i></button>			
+					<button type="button" class="btn btn-warning btn-sm" ng-click="cancelDeparture(departure.date)"><i class="fa fa-trash-o"></i></button>			
+			  </div>
+			</md-list-item>
+			<md-divider ></md-divider>					
+		</div>
+        </md-list-item>
+      </md-list>
+    </md-content>
+	<p class="footnote">
+		Make as many departures of the trip as you like. Mention the price. Mention, in detail, what makes this particular departure special - cheaper, tougher, sexier. Whatever. As long as you can make it interesting.
+	</p>		
+	<button type="button" class="btn btn-info btn-sm" ng-click="addDeparture()">More</button>			
+  </div>
+</div>
+

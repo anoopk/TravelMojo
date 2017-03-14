@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Powered by BuffyFish</title>
+    <link href="app-content/app.css" rel="stylesheet" />
+	<link href="libs/css/angular-pickadate.css" rel="stylesheet" />	
+	
+</head>
+<body background="app-content/beach.jpg">	
+    <!-- header -->
+    <header>
+    </header>
+		<nav class="navbar navbar-fixed-top">
+			<div class="container-fluid">
+			<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+			</button>			
+				<a ui-sref="home" class="navbar-brand" href="#">TravelMojo</a>
+			</div>		
+			<div class="collapse navbar-collapse" id="myNavbar">						
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#myModal" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-filter"></span>Filters</span></a></li>								
+					<li><a data-content="hahaha" rel="popover" data-original-title="Time Zone" ui-sref="account"><span class="glyphicon glyphicon-user"></span>Account</span></a></li>
+					<li><a ui-sref="trips({filter: false})"><span class="glyphicon glyphicon-plane"></span>Trips</span></a></li>
+					<li><a href="/login" target="_self"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+				</ul>
+			</div>	
+		  </div>
+		</nav>	
+		<div class="modal fade" id="myModal"  ng-controller="CarouselDemoCtrl">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				  <h4 class="modal-title">Filters</h4>
+					<div>
+						<div class="panel panel-default">
+							<filter-panel source="dataSource" filtered-source="filteredDataSource" filter-props="Code,Sport,Country,Enabled"></filter-panel>
+						</div>
+					</div>
+				</div>
+											{{text}}				  
+				<div class="modal-body">
+				</div>
+			  </div>
+			</div>
+		</div>		
+    <main ui-view>
+	</main>
+
+    <!-- footer -->
+    <footer></footer>
+    <!-- external scripts -->
+	<script type="text/javascript" src="libs/tv4.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-animate.js">	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+	<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">	
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">	
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<script src="//storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>	
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">	
+	<link href='https://fonts.googleapis.com/css?family=Black+Ops+One' rel='stylesheet' type='text/css'>	
+	<link href="http://yong2579.github.io/src/css/bootstrap-dialog.css" rel="stylesheet" type="text/css" />
+	<script src="http://yong2579.github.io/src/js/bootstrap-dialog.js"></script>		
+	<script src="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.16/textAngular.min.js"></script>
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	<script src="libs/tx-tinymce.js"></script>	
+	<script src="libs/angular-sanitize.js"></script>	
+	<script src="libs/angular-socialshare.min.js"></script>	
+	<script src="libs/angularjs-social-login.js"></script>	
+	<script src="libs/angular-facebook.js"></script>
+	<script src="libs/angular-filter-panel.js"></script>
+	<script src="libs/bootstrap-checkbox.min.js" defer></script>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js" defer></script>	
+	<script type="text/javascript" src="libs/angular-schema-form.min.js"></script>
+	<script type="text/javascript" src="libs/angular-schema-form-bootstrap.min.js"></script>	
+	<script src="libs/bootstrap-tinymce.js"></script>	
+	<script src="libs/angular-pickadate.js"></script>		
+	
+    <!-- application scripts -->
+    <script src="app.js"></script>
+    <script src="app-services/user.service.js"></script>
+    <script src="app-services/flash.service.js"></script>
+	<script src="app-services/trip.service.js"></script>
+    <script src="home/index.controller.js"></script>
+    <script src="account/index.controller.js"></script>
+	<script src="trips/index.controller.js"></script>
+	<script src="tripDetails/index.controller.js"></script>
+</body>
+</html>
