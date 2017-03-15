@@ -23,7 +23,7 @@
 		})		
         .controller('TripDetails.IndexController', Controller);
 
-    function Controller($scope, UserService, TripService, $mdDialog, $stateParams) {
+    function Controller($scope, UserService, TripService, $mdDialog, $state, $stateParams) {
         var vm = this;
         vm.user = null;
 		var tripSchema = {};
@@ -38,24 +38,30 @@
 		$scope.trip = {};			
 		$scope.trip.itinerary = [];				
 		$scope.trip.departures = [];				
+		$scope.trip.notes = "I do not need any assistance at this point int time.";		
 		$scope.trip.length = 0;
         function initController() {	
 			$scope.activites = [{id:1, name : 'Suicide Bombing'}, {id:2, name : 'Paragliding'}, {id:3, name : 'Diving'}, {id:4, name : 'Trekking'}];
+			$scope.budgets = [{id:1, name : 'Luxury'}, {id:2, name : 'Budget'}, {id:3, name : 'Backpacker'}];
+			$scope.difficulties = [{id:1, name : 'Extreme'}, {id:2, name : 'Medium'}, {id:3, name : 'Easy'}];
+			$scope.ratings = [{id:1, name : 'Adult'}, {id:2, name : 'U/A'}, {id:3, name : 'Universal'}, {id:4, name : 'PG'}, ];
             // get current user
             UserService.GetCurrent().then(function (user) {
                 vm.user = user;
 				//Get the latest data for this trip as it might have changed since we got it last.
-				UserService.GetTrip(vm.user.username, $stateParams.tripId).then(function (trip){
-					$scope.trip = trip;
-				});
+				if($stateParams.tripId){
+					UserService.GetTrip(vm.user.username, $stateParams.tripId).then(function (trip){
+						$scope.trip = trip;
+					});
+				}
             });
         }
 		
 		$scope.checkModel = function(){
-			//$scope.showSimpleToast();
-			console.log(">>>", $scope.trip);
 			if($scope.trip._id){
-				UserService.UpdateTrip($scope.trip);
+				UserService.UpdateTrip($scope.trip, true).then(function () {
+					$state.go("trips");
+				});
 			}
 			else{
 				$scope.trip.userName = vm.user.username;
@@ -74,8 +80,8 @@
 			);
 		};	
 		
-		$scope.addDeparture = function(){			
-			//implies I am creating a new trip
+		$scope.addDeparture = function(date){		
+			console.log("Departures ", $scope.trip.departures);
 			$scope.openDialog = function() {	
 				$mdDialog.show({
 					parent: angular.element(document.body),
@@ -88,15 +94,17 @@
 				
 				function DialogController($scope, $mdDialog) {
 					$scope.closeDialog = function() {
-						if($scope.singleDeparture.date){
+						if(date){
+							$scope.trip.departures = $scope.trip.departures.filter(function(it){
+								return it.date != date;
+							});
 							$scope.trip.departures[$scope.trip.departures.length] = $scope.singleDeparture;
-							$scope.singleDeparture = null;							
+							$scope.singleDeparture = null;																				
 						}
 						$mdDialog.hide();
 					}
 				}		
 			}
-			//$scope.singleDeparture = {'price':1800};
 			$scope.openDialog();
 		}
 		
@@ -141,7 +149,9 @@
 				return it.date == date;
 			});	
 			$scope.singleDeparture = departure[0];
-			$scope.addDeparture();			
+			var date = new Date($scope.singleDeparture.date);
+			$scope.singleDeparture.date = date;
+			$scope.addDeparture(date);			
 		}
 		
 		$scope.cancelDeparture = function(date){
@@ -155,20 +165,6 @@
 			var target = evt.currentTarget.innerText.toLowerCase();
 			$scope.items = {"description":false, "itinerary":false, "departures":false, "coversations":false};					
 			$scope.items[target] = true;
-			if(target == "conversations"){
-				return;
-			}
-			if(tripSchema[target] === undefined){
-				UserService.GetLayoutJSON(target).then(function (json){
-					tripSchema[target] = json.data;
-					$scope.schema = tripSchema[target][0]['schema'];
-					$scope.forms = tripSchema[target][0];
-				});				
-			}
-			else{
-				$scope.schema = tripSchema[target][0]['schema'];
-				$scope.forms = tripSchema[target][0];				
-			}
 		}
     }
 })();

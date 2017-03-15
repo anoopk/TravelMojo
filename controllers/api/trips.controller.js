@@ -72,6 +72,7 @@ function getAllTrips(req, res) {
 }
 
 function createTrip(req, res) {
+	console.log("createTrip ");
     tripService.create(req.body)
         .then(function () {
             res.sendStatus(200);
@@ -96,6 +97,7 @@ function getTrip(req, res) {
 }
 
 function updateTrip(req, res) {
+	console.log("updateTrip");
     var id = req.body._id;
     tripService.update(id, req.body)
         .then(function () {

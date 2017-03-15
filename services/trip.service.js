@@ -63,6 +63,9 @@ function getById(_id) {
 function create(tripParam) {
     var deferred = Q.defer();
     // validation
+	delete(tripParam._id);
+
+	console.log("trip-service.js", tripParam);
     createTrip(tripParam);
 	
     function createTrip(tripParam, userName) {
@@ -70,7 +73,7 @@ function create(tripParam) {
             tripParam,
             function (err, doc) {
                 if (err) deferred.reject(err.name + ': ' + err.message);
-				auditService.createAuditLog(null, null, tripParam, null, "anoop_kr@yahoo.com");
+				auditService.createAuditLog(null, doc._id, tripParam, null, tripParam.userId);
                 deferred.resolve();
             });
     }
@@ -90,6 +93,7 @@ function update(_id, trip) {
 	});
    
 	function updateTrip(_id, trip, tripOrig) {
+		console.log(trip);
         db.trips.update(            
 			{ _id: mongo.helper.toObjectID(_id) },
             { $set: trip },

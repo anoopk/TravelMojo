@@ -21,6 +21,33 @@
 			</md-input-container>		
 			
 		</div>
+
+		<md-input-container class="md-block">
+		<label>Quick Description</label>
+		<textarea ng-model="trip.quickDescription"></textarea>
+		</md-input-container>
+
+		<div layout="row" style="padding-bottom:30px">		
+		<md-input-container>
+		  <md-select  style="padding-left:0px" ng-model="trip.budget" placeholder="Budget">
+			<md-option ng-value="budget" ng-repeat="budget in budgets">{{ budget.name }}</md-option>
+		  </md-select>
+		</md-input-container>		
+
+		<md-input-container>
+		  <md-select style="padding-left:70px" ng-model="trip.rating" placeholder="Ratings">
+			<md-option ng-value="rating" ng-repeat="rating in ratings">{{ rating.name }}</md-option>
+		  </md-select>
+		</md-input-container>		
+
+		<md-input-container>
+		  <md-select style="padding-left:70px" ng-model="trip.difficulty" placeholder="Difficulty">
+			<md-option ng-value="difficulty" ng-repeat="difficulty in difficulties">{{ difficulty.name }}</md-option>
+		  </md-select>
+		</md-input-container>		
+		
+		</div>
+		
 		<div layout="row">
 			<md-input-container class="md-block">
 			<label>Cost (USD)</label>
@@ -37,9 +64,14 @@
 			</md-input-container>		
 			<md-input-container class="md-block">
 			<md-checkbox name="cost" ng-model="trip.suggestCost" required>
-			  Suggest price for this trip.
+			  Suggest price for this trip
 			</md-checkbox>			
 			</md-input-container>		
+			<md-input-container class="md-block">
+			<md-checkbox name="cost" ng-model="trip.showPrice" required>
+			  Show price on slide.
+			</md-checkbox>			
+			</md-input-container>					
 		</div>
 		<div layout="row">
 		  <md-input-container class="md-block">
@@ -69,11 +101,18 @@
 			<input name="groupSize" ng-model="trip.groupSize"/>
 			</md-input-container>
 		</div>
-		<md-input-container class="md-block">
-		<label>Description</label>
-		<textarea ng-model="trip.description"></textarea>
-		</md-input-container>
+		<label>Detailed Description</label>		
+		<div style="padding:2%" class="container app">
+			<div text-angular="text-angular" name="htmlcontent" ng-model="trip.description" ta-disabled='disabled'></div>
+		</div>		
 
+		<md-input-container class="md-block">
+		<label>Notes</label>
+		<textarea ng-model="trip.notes"></textarea>
+		<div ng-messages="projectForm.description.$error">
+		<div ng-message="required">Leave a note for the Administartor in case of any doubt.</div>
+		</md-input-container>
+		
 		<md-input-container class="md-block">
         <md-checkbox name="tos" ng-model="trip.tos" required>
           I accept the terms of service.

@@ -61,7 +61,7 @@
         }
 		
         function UpdateTrip(trip) {
-			console.log("Update");
+			console.log("Update", trip);
 			trip.lastChangedOn = new Date();
             return $http.put('/api/trips/' + trip._id, trip).then(handleSuccess, handleError);
         }

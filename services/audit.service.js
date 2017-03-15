@@ -40,10 +40,10 @@ function createAuditLog(collectionName, _id, newRec, origRec, username){
 		auditRecord.timeStamp = new Date();
 		auditRecord.changer = username;
 		auditRecord.name = newRec.name;
-		if(_id == null){
+		if(origRec == null){
 			console.log("Creating Audit and trip");
 			insertable = true;
-			auditRecord.verb = 'create';					
+			auditRecord.verb = 'Create';					
 		}
 		else{	
 			Object.keys(tripNew).forEach(function(key) {
