@@ -1,5 +1,14 @@
 ﻿body {
     padding: 20px 0;
+	background: -moz-linear-gradient(to bottom, #FFFFFF, #0099ff);
+    background: linear-gradient(to bottom, #FFFFFF, #0099ff);
+}	
+a.button{
+    float:left;
+    width:80px;
+    text-align:center;
+    text-decoration:none;
+    color:#666;
 }
 .flash-message {
     margin-top: 20px;
@@ -398,4 +407,11 @@ margin-bottom: 10px;
 .inputdemoErrors md-input-container > p {
   font-size: 0.8em;
   text-align: left;
-  width: 100%; }
+  width: 100%; } 
+
+.float-text
+{
+    background: rgba(25, 25, 25, 0);
+    color: black;
+    font-size: 12px;
+}  

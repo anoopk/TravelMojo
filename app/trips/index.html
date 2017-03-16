@@ -26,7 +26,7 @@
 				<img ng-src="{{slide.image}}" style="margin:auto;">
 				<h2><span>{{slide.title}}<br /></h2>
 				<h3><span>{{slide.quickDescription}}<br /></h3>
-				<h4><span>{{slide.departure}} for {{slide.cost}}<br /></h4>
+				<h4><span ng-show="slide.showPrice">{{slide.departure}} for {{slide.cost}}<br /></h4>
 				<div ng-show="slide.cancelled" id="cancelnote" class="rubber">
 				<div>
 				  Cancelled
@@ -51,12 +51,13 @@
 				</div>	
 				<div id="buttonpanel" ng-show="showButtons" ng-mouseleave="mouseleave()">
 				<div style="float: left; padding: 1px;">				
-					<button ng-if="!createNewFlag" type="button" data-toggle="tooltip" title="Create a new brand Trip" id="createNew" class="btn btn-success" ng-click="create()">Create Trip</button>										
+					<button ng-if="!createNewFlag" type="button" data-toggle="tooltip" title="Create a new brand Trip" id="createNew" class="btn btn-success" ng-click="create()">Create</button>										
 				</div>		   																
+				<div style="float: left; padding: 1px;">				
+					<button ng-if="!createNewFlag" type="button" data-toggle="tooltip" title="Publish this Trip" id="createNew" class="btn btn-danger" ng-click="publish()">Publish</button>										
+				</div>		   																				
 				<div class="btn-group">
-					<button class="btn btn-warning" data-toggle="tooltip" title="Publish this Trip" ng-model="checkModel.publish" uib-btn-checkbox ng-click="toggleStatus('published', slide)"><i class="fa fa-external-link-square"></i>
-					<button class="btn btn-warning" data-toggle="tooltip" title="Mark this Trip as private" ng-model="checkModel.private" uib-btn-checkbox ng-click="toggleStatus('private', slide)"><i class="fa fa-bars"></i>				
-					<button class="btn btn-warning" data-toggle="tooltip" title="Cancel" ng-model="checkModel.cancelled" ng-click="toggleStatus('cancelled', slide)"><i class="fa fa-times-rectangle"></i>
+					<button ng-if="!createNewFlag" type="button" data-toggle="tooltip" title="Cancel this Trip" id="createNew" class="btn btn-warning" ng-click="cancel()">Cancel</button>										
 				</div>
 				<div class="btn-group">
 					<button class="btn btn-primary" data-toggle="tooltip" title="Edit Trip Details" ng-model="checkModel.edit" ng-click="actionInitiated('edit', slide)"><i class="fa fa-pencil"></i>

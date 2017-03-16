@@ -58,6 +58,19 @@
         }
 		
 		$scope.checkModel = function(){
+			//Need to convert all undefined checkboxes into false
+			if($scope.trip.public == undefined){
+				$scope.trip.public = false;
+			}
+			if($scope.trip.suggestCost == undefined){
+				$scope.trip.suggestCost = false;
+			}
+			if($scope.trip.showPrice == undefined){
+				$scope.trip.showPrice = false;
+			}			
+			if($scope.trip.tos == undefined){
+				$scope.trip.tos = false;
+			}						
 			if($scope.trip._id){
 				console.log("$$$$$$$$$$ ", $scope.trip.budget);
 				UserService.UpdateTrip($scope.trip, true).then(function () {
@@ -109,7 +122,11 @@
 			$scope.openDialog();
 		}
 		
-		$scope.addDay = function(){			
+		$scope.addDay = function(day){			
+			$scope.day = day;		
+			if(null == day){
+				$scope.singleDay = {};
+			}
 			$scope.openDialog = function() {	
 				$mdDialog.show({
 					parent: angular.element(document.body),
@@ -122,7 +139,13 @@
 				
 				function DialogController($scope, $mdDialog) {
 					$scope.closeDialog = function() {
-						$scope.trip.itinerary[$scope.trip.itinerary.length] = $scope.singleDay;
+						if(undefined === $scope.trip.itinerary){
+							$scope.trip.itinerary = [];
+						}
+						console.log($scope.day, $scope.trip.itinerary);
+						if(undefined === $scope.day && $scope.singleDay.day){
+							$scope.trip.itinerary.push($scope.singleDay);
+						}
 						$mdDialog.hide();
 					};
 				};				
@@ -135,7 +158,7 @@
 				return it.day == day;
 			});	
 			$scope.singleDay = 	itinerary[0];
-			$scope.addDay();			
+			$scope.addDay(day);			
 		}
 		
 		$scope.cancelDay = function(day){
