@@ -59,6 +59,7 @@
 		
 		$scope.checkModel = function(){
 			if($scope.trip._id){
+				console.log("$$$$$$$$$$ ", $scope.trip.budget);
 				UserService.UpdateTrip($scope.trip, true).then(function () {
 					$state.go("trips");
 				});

@@ -30,19 +30,19 @@
 		<div layout="row" style="padding-bottom:30px">		
 		<md-input-container>
 		  <md-select  style="padding-left:0px" ng-model="trip.budget" placeholder="Budget">
-			<md-option ng-value="budget" ng-repeat="budget in budgets">{{ budget.name }}</md-option>
+			<md-option value="{{budget.id}}" ng-repeat="budget in budgets">{{ budget.name }}</md-option>
 		  </md-select>
 		</md-input-container>		
 
 		<md-input-container>
 		  <md-select style="padding-left:70px" ng-model="trip.rating" placeholder="Ratings">
-			<md-option ng-value="rating" ng-repeat="rating in ratings">{{ rating.name }}</md-option>
+			<md-option value="{{rating.id}}"  ng-repeat="rating in ratings">{{ rating.name }}</md-option>
 		  </md-select>
 		</md-input-container>		
 
 		<md-input-container>
 		  <md-select style="padding-left:70px" ng-model="trip.difficulty" placeholder="Difficulty">
-			<md-option ng-value="difficulty" ng-repeat="difficulty in difficulties">{{ difficulty.name }}</md-option>
+			<md-option value="{{difficulty.id}}"  ng-repeat="difficulty in difficulties">{{ difficulty.name }}</md-option>
 		  </md-select>
 		</md-input-container>		
 		
