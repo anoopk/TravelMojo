@@ -1,10 +1,10 @@
-<div layout="column" ng-cloak>
+<div >
 	<md-content layout-padding>
 		<form name="projectForm">
 		<div layout="row">
 			<md-input-container class="md-block">
 			<label>Title</label>
-			<input md-maxlength="30" required md-no-asterisk name="title" ng-model="trip.title">
+			<input ng-readonly="false" md-maxlength="30" required md-no-asterisk name="title" ng-model="trip.title">
 			<div ng-messages="projectForm.description.$error">
 			<div ng-message="required">This is required. Think up an enticing name for the trip</div>
 			<div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
@@ -101,16 +101,15 @@
 			<input name="groupSize" ng-model="trip.groupSize"/>
 			</md-input-container>
 		</div>
-		<label>Detailed Description</label>		
+		<label> Detailed Description</label>		
 		<div style="padding:2%" class="container app">
 			<div text-angular="text-angular" name="htmlcontent" ng-model="trip.description" ta-disabled='disabled'></div>
 		</div>		
-
 		<md-input-container class="md-block">
 		<label>Notes</label>
 		<textarea ng-model="trip.notes"></textarea>
-		<div ng-messages="projectForm.description.$error">
-		<div ng-message="required">Leave a note for the Administartor in case of any doubt.</div>
+		<div ng-messages="projectForm.description.$error"></div>
+		<div ng-message="required">Leave a note for the Administrator in case of any doubt.</div>
 		</md-input-container>
 		
 		<md-input-container class="md-block">
