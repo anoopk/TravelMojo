@@ -58,7 +58,13 @@ a.button{
     
    padding: 5px;
 }
-
+#cog5{
+   position: absolute;
+   top: 80px;
+   left: 940px; 
+    
+   padding: 5px;
+}
 #cancelnote {
    position: absolute;
    top: 500px;

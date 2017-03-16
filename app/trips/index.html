@@ -22,7 +22,13 @@
 				socialshare-hashtags="angularjs, angular-socialshare"
 				socialshare-url="http://720kb.net">
 				<i id="cog4" class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i>
-				</a>										
+				</a>							
+				<a id="cog5">
+					<button class="btn btn-sm btn-primary" data-toggle="tooltip" title="Send\Receive messages" ng-model="checkModel.messages" ng-click="actionInitiated('shpwMessages', slide)">
+						<i class="fa fa-bell"></i>
+						<i class="fa fa-stack-1x text-danger fa-1x">{{notificationCount}}</i>							
+					</button>	
+				</a>							
 				<img ng-src="{{slide.image}}" style="margin:auto;">
 				<h2><span>{{slide.title}}<br /></h2>
 				<h3><span>{{slide.quickDescription}}<br /></h3>
@@ -46,10 +52,6 @@
 				<div class="btn-group">
 					<button class="btn btn-primary" data-toggle="tooltip" title="Edit Trip Details" ng-model="checkModel.edit" ng-click="actionInitiated('edit', slide)"><i class="fa fa-pencil"></i>
 					<button class="btn btn-primary" data-toggle="tooltip" title="Clone this Trip" ng-model="checkModel.clone" ng-click="actionInitiated('clone', slide)"><i class="fa fa-clone"></i>
-					<button class="btn btn-primary" data-toggle="tooltip" title="Send\Receive messages" ng-model="checkModel.messages" ng-click="actionInitiated('shpwMessages', slide)">
-						<i class="fa fa-bell"></i>
-						<i class="fa fa-stack-1x text-danger fa-1x">{{notificationCount}}</i>							
-					</button>	
 				</div>			
 			</div>
 		  </div>

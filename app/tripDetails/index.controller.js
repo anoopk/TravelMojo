@@ -95,7 +95,6 @@
 		};	
 		
 		$scope.addDeparture = function(date){		
-			console.log("Departures ", $scope.trip.departures);
 			$scope.openDialog = function() {	
 				$mdDialog.show({
 					parent: angular.element(document.body),
@@ -108,13 +107,13 @@
 				
 				function DialogController($scope, $mdDialog) {
 					$scope.closeDialog = function() {
-						if(date){
-							$scope.trip.departures = $scope.trip.departures.filter(function(it){
-								return it.date != date;
-							});
-							$scope.trip.departures[$scope.trip.departures.length] = $scope.singleDeparture;
-							$scope.singleDeparture = null;																				
+						if(undefined === $scope.trip.departures){
+							$scope.trip.departures = [];
 						}
+						if(undefined === date && $scope.singleDeparture.date){
+							$scope.trip.departures.push($scope.singleDeparture);
+						}
+						$scope.singleDeparture = null;																				
 						$mdDialog.hide();
 					}
 				}		
