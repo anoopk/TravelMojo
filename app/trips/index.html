@@ -32,21 +32,6 @@
 				  Cancelled
 				</div>				
 				</div>	
-				<div id="notificationsView">
-						<span ng-show="notificationIcon" id="notificationIcon" class="fa-stack" ng-click="toggleNotifications(slide)">
-							<i style="width: 100%;" class="fa fa-envelope fa-stack-1x fa-2x" aria-hidden="false"></i>
-							<i class="fa fa-stack-2x text-danger fa-1x">{{notificationCount}}</i>							
-						</span>
-						<md-list id="notificationsList" ng-show="notificationsVisible" style="background-color: white" id="notificationList" >
-						<div class="row">
-								<a href="#" ng-click="toggleNotifications(slide)" aria-label="Show/hide notifications">
-								Notifications
-								</a>
-							<md-divider style="width: 92%;" ng-if="!$last"></md-divider>
-							<div style="max-height:300px; overflow-y: scroll;" id="notificationListStart"></div>
-						</div>							
-					</md-list>					
-				</div>
 				<div class="carousel-caption">
 				</div>	
 				<div id="buttonpanel" ng-show="showButtons" ng-mouseleave="mouseleave()">
@@ -62,7 +47,10 @@
 				<div class="btn-group">
 					<button class="btn btn-primary" data-toggle="tooltip" title="Edit Trip Details" ng-model="checkModel.edit" ng-click="actionInitiated('edit', slide)"><i class="fa fa-pencil"></i>
 					<button class="btn btn-primary" data-toggle="tooltip" title="Clone this Trip" ng-model="checkModel.clone" ng-click="actionInitiated('clone', slide)"><i class="fa fa-clone"></i>
-					<button class="btn btn-primary" data-toggle="tooltip" title="Attach" ng-model="checkModel.attach" ng-click="actionInitiated('attach', slide)"><i class="fa fa-envelope"></i>
+					<button class="btn btn-primary" data-toggle="tooltip" title="Send\Receive messages" ng-model="checkModel.messages" ng-click="actionInitiated('shpwMessages', slide)">
+						<i class="fa fa-bell"></i>
+						<i class="fa fa-stack-1x text-danger fa-1x">{{notificationCount}}</i>							
+					</button>	
 				</div>			
 			</div>
 		  </div>
