@@ -50,7 +50,6 @@
 					$scope.userPersona = null;
 				}			
 				UserService.GetAllTrips($scope.userPersona).then(function(data){								
-					console.log("$$$$$$$$$$$$$$$$$ ", data);
 					$scope.trips = data;				
 					for (var i = 0; i < data.length; i++) {
 						data[i].id = i;
@@ -198,7 +197,7 @@
 			}			
 			
 			$scope.edit = function(trip){
-				console.log(trip._id);
+				console.log(trip);
 				$state.go('tripDetails', {tripId : trip._id});
 			}
 			

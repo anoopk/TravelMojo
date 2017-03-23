@@ -9,7 +9,7 @@
 					<i class="fa fa-pencil" ng-click="editDay(itinerary.day)"></i>			
 					<i class="fa fa-trash-o" ng-click="cancelDay(itinerary.day)"></i>
 					<i class="fa fa-angle-right" aria-hidden="true"></i>
-					<label>Day {{ itinerary.day }}:</label>				
+					<span class="label label-info">Day {{ itinerary.day }}:</span>				
 					{{itinerary.description}}					
 					<md-chips ng-model="itinerary.activities" readonly="true" md-removable="false" md-max-chips="10">
 						<md-chip-template>

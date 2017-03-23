@@ -21,21 +21,6 @@
 			</md-input-container>					
 		</div>	
 		<md-input-container class="md-block">
-		<div class="row">
-			<button class ="btn btn-primary" ngf-select="uploadFiles($files)" multiple accept="image/*">Upload Images of the Trip</button>
-			<span class="progress" ng-show="progress >= 0">
-			<div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
-			</span>
-		</div>	
-		<ul></br>
-		<li ng-repeat="f in files" style="font:smaller">
-			{{f.name}}
-		</li>
-		</ul>
-		{{errorMsg}}		
-		</md-input-container>
-		</br>
-		<md-input-container class="md-block">
 		<label>Quick Description</label>
 		<textarea ng-model="trip.quickDescription"></textarea>
 		</md-input-container>
@@ -48,17 +33,32 @@
 		</md-input-container>		
 
 		<md-input-container>
-		  <md-select style="padding-left:70px" ng-model="trip.rating" placeholder="Ratings">
+		  <md-select style="padding-left:22%" ng-model="trip.rating" placeholder="Ratings">
 			<md-option value="{{rating.id}}"  ng-repeat="rating in ratings">{{ rating.name }}</md-option>
 		  </md-select>
 		</md-input-container>		
 
 		<md-input-container>
-		  <md-select style="padding-left:70px" ng-model="trip.difficulty" placeholder="Difficulty">
+		  <md-select style="padding-left:22%" ng-model="trip.difficulty" placeholder="Difficulty">
 			<md-option value="{{difficulty.id}}"  ng-repeat="difficulty in difficulties">{{ difficulty.name }}</md-option>
 		  </md-select>
 		</md-input-container>		
-		
+
+		<md-input-container style="padding-left:22%"class="md-block">
+		<div class="row">
+			<button class ="btn btn-primary" ngf-select="uploadFiles($files)" multiple accept="image/*">Better than a thousand words!</button>
+			<span class="progress" ng-show="progress >= 0">
+			<div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+			</span>
+		</div>	
+		<ul></br>
+		<li ng-repeat="f in trip.files" style="font:smaller">
+			{{f.name}}
+		</li>
+		</ul>
+		{{errorMsg}}		
+		</md-input-container>
+
 		</div>
 		
 		<div layout="row">

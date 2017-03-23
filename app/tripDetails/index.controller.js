@@ -36,7 +36,6 @@
 		$scope.notifications = [{name:"Alfreds Futterkiste", date:now, unread:true}, {name:"Berglunds snabbköp", date:now, unread:true}, {name:"Centro comercial Moctezuma", date:now}, {name:"Ernst Handel", date:now, unread:false}];		
 		$scope.items = {"description":true, "itinerary":false, "departures":false, "coversations":false};		
 		$scope.trip = {};			
-		$scope.trip.fileNames = ["adfvdfv","sdfvsadf"];		
 		$scope.trip.itinerary = [];				
 		$scope.trip.departures = [];				
 		$scope.trip.notes = "I do not need any assistance at this point int time.";		
@@ -59,6 +58,7 @@
         }		
 		
 		$scope.uploadFiles = function (files) {
+			console.log(files);
 			$scope.trip.files = files;
 			UserService.UploadFiles(files);
 		};
@@ -78,7 +78,6 @@
 				$scope.trip.tos = false;
 			}						
 			if($scope.trip._id){
-				console.log("$$$$$$$$$$ ", $scope.trip.budget);
 				UserService.UpdateTrip($scope.trip, true).then(function () {
 					$state.go("trips");
 				});
