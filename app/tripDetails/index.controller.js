@@ -23,7 +23,7 @@
 		})		
         .controller('TripDetails.IndexController', Controller);
 
-    function Controller($scope, UserService, TripService, $mdDialog, $state, $stateParams) {
+    function Controller($scope, UserService, TripService, $mdDialog, $state, $stateParams, Upload, $timeout) {
         var vm = this;
         vm.user = null;
 		var tripSchema = {};
@@ -36,6 +36,7 @@
 		$scope.notifications = [{name:"Alfreds Futterkiste", date:now, unread:true}, {name:"Berglunds snabbköp", date:now, unread:true}, {name:"Centro comercial Moctezuma", date:now}, {name:"Ernst Handel", date:now, unread:false}];		
 		$scope.items = {"description":true, "itinerary":false, "departures":false, "coversations":false};		
 		$scope.trip = {};			
+		$scope.trip.fileNames = ["adfvdfv","sdfvsadf"];		
 		$scope.trip.itinerary = [];				
 		$scope.trip.departures = [];				
 		$scope.trip.notes = "I do not need any assistance at this point int time.";		
@@ -55,7 +56,12 @@
 					});
 				}
             });
-        }
+        }		
+		
+		$scope.uploadFiles = function (files) {
+			$scope.trip.files = files;
+			UserService.UploadFiles(files);
+		};
 		
 		$scope.checkModel = function(){
 			//Need to convert all undefined checkboxes into false

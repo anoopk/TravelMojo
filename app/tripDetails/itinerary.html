@@ -5,10 +5,12 @@
 		<div ng-repeat="itinerary in trip.itinerary">
 			<md-list-item class="md-3-line">
 				<div class="md-list-item-text">		  
-					<strong>Day {{ itinerary.day }}</strong>				
-					<button type="button" class="btn btn-info btn-sm" ng-click="editDay(itinerary.day)"><i class="fa fa-pencil"></i></button>			
-					<button type="button" class="btn btn-warning btn-sm" ng-click="cancelDay(itinerary.day)"><i class="fa fa-trash-o"></i></button>										
-					<p>{{itinerary.description}}</p>
+					<img ng-src="https://unsplash.it/1350/650" class="md-avatar" alt="{{user.name}}" />				
+					<i class="fa fa-pencil" ng-click="editDay(itinerary.day)"></i>			
+					<i class="fa fa-trash-o" ng-click="cancelDay(itinerary.day)"></i>
+					<i class="fa fa-angle-right" aria-hidden="true"></i>
+					<label>Day {{ itinerary.day }}:</label>				
+					{{itinerary.description}}					
 					<md-chips ng-model="itinerary.activities" readonly="true" md-removable="false" md-max-chips="10">
 						<md-chip-template>
 							{{$chip}}

@@ -2,7 +2,9 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router', 'ui.bootstrap', 'ngMaterial', '720kb.socialshare', 'socialLogin', 'textAngular', 'facebook', 'ngSanitize', 'schemaForm', 'pickadate', 'md.chips.select'])
+        .module('app', ['ui.router', 'ui.bootstrap', 'ngMaterial', '720kb.socialshare', 'socialLogin', 
+						'textAngular', 'facebook', 'ngSanitize', 'schemaForm', 'pickadate', 'md.chips.select', 
+						'ngFileUpload'])
         .config(config)
 		.controller('facebookLogin', [
     '$scope',

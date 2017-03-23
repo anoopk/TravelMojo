@@ -9,7 +9,7 @@
   </p>
   <uib-accordion close-others="oneAtATime">
     <div uib-accordion-group ng-cloak class="panel-info" is-open="items['description']" is-disabled="status.isFirstDisabled">
-		<div class="content-grid" ng-include="'tripDetails/description.html'"></div>	
+		<div ng-include="'tripDetails/description.html'"></div>	
 		<!--<form sf-schema="schema" sf-form="forms['description'].form" sf-model="model"></form>-->
     </div>
     <div uib-accordion-group ng-cloak class="panel-info" is-open="items['itinerary']" is-disabled="items['itinerary'].disabled">

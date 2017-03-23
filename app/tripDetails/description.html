@@ -1,4 +1,4 @@
-<div >
+<div>
 	<md-content layout-padding>
 		<form name="projectForm">
 		<div layout="row">
@@ -18,10 +18,23 @@
 			<md-checkbox name="public" ng-model="trip.public" required>
 			  Public
 			</md-checkbox>			
-			</md-input-container>		
-			
-		</div>
-
+			</md-input-container>					
+		</div>	
+		<md-input-container class="md-block">
+		<div class="row">
+			<button class ="btn btn-primary" ngf-select="uploadFiles($files)" multiple accept="image/*">Upload Images of the Trip</button>
+			<span class="progress" ng-show="progress >= 0">
+			<div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+			</span>
+		</div>	
+		<ul></br>
+		<li ng-repeat="f in files" style="font:smaller">
+			{{f.name}}
+		</li>
+		</ul>
+		{{errorMsg}}		
+		</md-input-container>
+		</br>
 		<md-input-container class="md-block">
 		<label>Quick Description</label>
 		<textarea ng-model="trip.quickDescription"></textarea>

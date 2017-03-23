@@ -9,7 +9,7 @@
         var service = {};
 		
 		service.GetLayoutJSON = GetLayoutJSON;
-		
+		service.UploadFiles = UploadFiles;
 		service.GetNotifications = GetNotifications;
 		service.CreateTrip = CreateTrip;
 		service.DeleteTrip = DeleteTrip;
@@ -26,6 +26,11 @@
         service.Delete = Delete;
 
         return service;
+		
+		function UploadFiles(file){
+			console.log("Files ", file);
+			return $http.post('/api/uploads', file).then(handleSuccess, handleError);			
+		}
 		
 		function GetLayoutJSON(layoutName){
 			return $http.get('config/' + layoutName + '.json');

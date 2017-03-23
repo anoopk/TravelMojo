@@ -3,13 +3,15 @@
     <md-content>
       <md-list class="md-dense" flex>
 		<div ng-repeat="departure in trip.departures">
-			<md-list-item class="md-3-line">
-			  <div class="md-list-item-text">		  
-					<p><strong>{{ departure.date | date:'shortDate' }}</strong> {{departure.description}}</p>
-					<button type="button" class="btn btn-primary">Price <span class="badge">{{departure.price}} USD</span></button>					
-					<button type="button" class="btn btn-info btn-sm" ng-click="editDeparture(departure.date)"><i class="fa fa-pencil"></i></button>			
-					<button type="button" class="btn btn-warning btn-sm" ng-click="cancelDeparture(departure.date)"><i class="fa fa-trash-o"></i></button>			
-			  </div>
+			<md-list-item class="md-3-line">			
+			<img ng-src="https://unsplash.it/1350/650" class="md-avatar" alt="{{user.name}}" />							  			
+			<div class="md-list-item-text">		  
+				<i class="fa fa-pencil" ng-click="editDeparture(departure.date)"></i>			
+				<i class="fa fa-trash-o" ng-click="cancelDeparture(departure.date)"></i>
+				<i class="fa fa-angle-right" aria-hidden="true"></i>
+				<strong>{{ departure.date | date:'shortDate' }}</strong> {{departure.description}}
+				<button type="button" class="btn btn-sm btn-primary">Price <span class="badge">{{departure.price}} USD</span></button>					
+			</div>
 			</md-list-item>
 			<md-divider ></md-divider>					
 		</div>
