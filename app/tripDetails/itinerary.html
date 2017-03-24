@@ -26,7 +26,11 @@
 	<p class="footnote">
 		Go ahead and create a day by day itinerary of the trip. Add as much detail as you can in the description. Select as many activities as you like. Make it exciting. Make it juicy. Make is sellable.
 	</p>	
-	<button type="button" class="btn btn-info btn-sm" ng-click="addDay()">More</button>			
+	<md-checkbox name="suggestItinerary" ng-model="trip.suggestItinerary" required>
+	</md-checkbox>				
+	<label> 		Or let us do it for you		</label>	
+	</br>
+	<button type="button" class="btn btn-info btn-sm" ng-click="addDay()">Go</button>			
   </div>
 </div>
 
