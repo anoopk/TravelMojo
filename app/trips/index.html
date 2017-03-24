@@ -2,11 +2,18 @@
 	<div ng-if="!createNewFlag" style="height: 305px" ng-controller="CarouselDemoCtrl">
 		<div ng-if="noTripsHosted" style="padding:20%; background: linear-gradient(black, white);">
 			<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="create()">Plan your first trip</button>
+			<button type="button" class="btn btn-warning btn-lg btn-block" ng-click="filterTrips()">Get Inspired</button>
 		</div>
 	
 		<div uib-carousel id="tripCarousel" active="active" interval="slideInterval" no-wrap="noWrapSlides">
 			<div uib-slide active="slide.active" ng-repeat="slide in slides track by slide.id" index="slide.id">	  
-				<i data-toggle="tooltip" title="Manage Trip" ng-show="retailer" id="cog" class="fa fa-cog fa-3x" aria-hidden="true" ng-mouseover="mouseenter()"></i>			
+				<div id="filter" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
+					<button ng-cloak ng-show="!myTrips" class="btn btn-primary" data-toggle="tooltip" title="Show only my trips" ng-click="filterTrips()"><i class="fa fa-user"></i>
+				</div>					
+				<div id="filter" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
+					<button ng-cloak ng-show="myTrips" class="btn btn-primary" data-toggle="tooltip" title="Show all trips" ng-click="filterTrips()"><i class="fa fa-users"></i>			
+				</div>	
+				<i id="cog" data-toggle="tooltip" title="Manage Trip" ng-show="editableSlide" class="fa fa-cog fa-3x" aria-hidden="true" ng-mouseover="mouseenter()"></i>			
 				<a  data-toggle="tooltip" title="Tweet this" href="#" socialshare
 				socialshare-provider="twitter"
 				socialshare-text="720kb AngularJS Socialshare"
@@ -27,7 +34,7 @@
 				socialshare-url="http://720kb.net">
 				<i id="cog4" class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i>
 				</a>							
-				<a id="cog5">
+				<a ng-show="editableSlide" id="cog5">
 					<button class="btn btn-primary" data-toggle="tooltip" title="Send\Receive messages" ng-model="checkModel.messages" ng-click="actionInitiated('shpwMessages', slide)">
 						<i class="fa fa-bell"></i>
 						<i class="fa fa-stack-1x text-danger fa-1x"><strong>{{notificationCount}}</strong></i>							
@@ -43,7 +50,7 @@
 				</div>	
 				<div class="carousel-caption">
 				</div>	
-				<div id="buttonpanel" ng-show="showButtons" ng-mouseleave="mouseleave()">
+				<div id="buttonpanel" ng-show="showButtons && editableSlide" ng-mouseleave="mouseleave()">				
 				<div style="float: left; padding: 1px;">				
 					<button type="button" data-toggle="tooltip" title="Create a new brand Trip" class="btn btn-success" ng-click="create()">New</button>										
 				</div>		   																

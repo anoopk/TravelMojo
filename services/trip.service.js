@@ -27,6 +27,7 @@ function createMongoFilter(filterDictionary){
 }
 
 function getAllTrips(userName){
+	userName = null;
 	var deferred = Q.defer();
 	if(userName){
 		//{$and: [{username:userName},{cancelled:true},{published:true}]}, 

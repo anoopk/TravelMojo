@@ -37,6 +37,13 @@ a.button{
     
    padding: 5px;
 }
+#filter{
+   position: absolute;
+   top: 80px;
+   left: 950px; 
+    
+   padding: 5px;
+}
 #cog2{
    position: absolute;
    top: 80px;

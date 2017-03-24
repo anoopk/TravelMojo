@@ -36,18 +36,18 @@
 			<div class="modal-dialog">
 			  <div class="modal-content">
 				<div class="modal-header">
-				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<label class="btn btn-info disabled">Select to see all public trips or just the ones hosted by you</label>				  
-						<div class="btn-group" data-toggle="buttons">
-							<label class="btn btn-primary">
-							<input type="radio" name="options" id="showAll" autocomplete="off"> All
-							</label>
-							<label class="btn btn-warning active">
-							<input type="radio" name="options" id="showMine" autocomplete="off"> Me
-							</label>
-						</div>					
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<label class="btn btn-info disabled">Select to see all public trips or just the ones hosted by you</label>				  
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-primary">
+							<input type="radio" name="options" ng-model="showAll" ng-change="showAll()"> All
+						</label>
+						<label class="btn btn-warning">
+							<input type="radio" name="options" ng-model="showMine" ng-change="showMine()"> Me
+						</label>
+					</div>					
 					</div>
-				</div>
+					</div>
 				{{text}}				  
 				<div class="modal-body">
 				</div>

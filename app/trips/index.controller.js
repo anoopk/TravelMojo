@@ -20,32 +20,19 @@
 			$scope.active = null;
 			$scope.noWrapSlides = false;
 			$scope.slideInterval = 5000;					
-			$scope.slides = [];
-					
 			UserService.GetCurrent().then(function (user) {				
 				vm.user = user;
 				vm.superadmin = (user.role == 'superadmin') ? true : false;
 				vm.retailer = (user.role == 'superadmin' || user.role == 'retailer') ? true : false ;								
-				$scope.userPersona = vm.user.username;				
-				if(vm.superadmin){
-					$scope.userPersona = null;
-				}			
-				UserService.GetAllTrips($scope.userPersona).then(function(data){								
-					$scope.trips = data;				
-					for (var i = 0; i < data.length; i++) {
-						data[i].id = i;
-						$scope.slides.push(data[i]);					
-					}
-					if($scope.slides.length == 0){
-						$scope.noTripsHosted = true;
-					}
-						console.log("$scope.noTripsHosted", $scope.noTripsHosted);					
-				});
 			});
-
+						
 			$scope.$watch(function () {
 				if($scope.lastActive != $scope.active){
+					$scope.editableSlide = false;
 					$scope.lastActive = $scope.active;
+					if($scope.slides && $scope.slides[$scope.active] && $scope.slides[$scope.active].userName == vm.user.username){
+							$scope.editableSlide = true;
+					}
 					if($scope.slides && $scope.slides[$scope.active]){
 						$scope.count[0] = $scope.lastActive;
 						$scope.notifications = $scope.slides[$scope.active].notifications;
@@ -57,33 +44,33 @@
 			$scope.mouseleave = function(){
 				if(false == $scope.showNotifications){
 					$scope.slideInterval = 5000;
-					vm.showButtons = false;
+					$scope.showButtons = false;
 				}
 			}
 
 			$scope.mouseenter = function(){
 				$scope.slideInterval = -1;
-				vm.showButtons = true;
+				$scope.showButtons = true;
 			}
 		})	
 		.controller('Trips.IndexController', Controller);
 		function Controller($window, UserService, FlashService, $scope, $mdDialog, $state, $stateParams, $filter, $rootScope) {
 			var vm = this;
+			$scope.slides = [];								
 			$scope.trips = {};		
 			initController();
 			$scope.showNotifications = false;
 			$scope.createNewFlag = false;				
-			$scope.slides = [];				
 			$scope.activeSlide = null;
 			$scope.notifications = null;
 			$scope.user = null;			
-			$scope.userPersona = null;
 			$scope.showButtons = false;			
 			$scope.count = [];
 			$scope.allNotifications	= null;		
 			$scope.selectedItem = 'All';
 			$scope.filter = {};
 			$scope.noTripsHosted = false;
+			$scope.myTrips = true;
 			
 			function initController() {
 				$rootScope.filters = {};
@@ -99,13 +86,31 @@
 					}
 					vm.superadmin = (user.role == 'superadmin') ? true : false ;
 					vm.retailer = (user.role == 'superadmin' || user.role == 'retailer') ? true : false ;								
-					$scope.userPersona = vm.user.username;				
-					if(vm.superadmin){
-						$scope.userPersona = null;
-					}			
+					$scope.prepareCarousel();
 				});
 			}
-		
+
+			$scope.prepareCarousel = function(){
+				UserService.GetAllTrips().then(function(data){								
+					if($scope.myTrips){
+						data = data.filter(function(tripData){
+							console.log(tripData.userName, vm.user.username);
+							return tripData.userName == vm.user.username;
+						});
+					}
+					$scope.trips = [];
+					$scope.slides = [];
+					$scope.trips = data;				
+					for (var i = 0; i < data.length; i++) {
+						data[i].id = i;
+						$scope.slides.push(data[i]);					
+					}
+					if($scope.slides.length == 0){
+						$scope.noTripsHosted = true;
+					}
+				});									
+			}
+					
 			$scope.toggleStatus = function(statusName, trip){
 				if(trip[statusName]){
 					trip[statusName] = !trip[statusName];
@@ -168,9 +173,16 @@
 			$scope.clone = function(trip){
 				trip.createdOn = new Date();			
 				UserService.CreateTrip(trip);
-				UserService.GetAllTrips($scope.userPersona).then(function(data){
+				UserService.GetAllTrips().then(function(data){
 					vm.myData = data;				
-				});			
+				});
+			}			
+
+			$scope.filterTrips = function(trip){			
+				$scope.showButtons = false;
+				$scope.noTripsHosted = false;				
+				$scope.myTrips = !$scope.myTrips;
+				$scope.prepareCarousel();
 			}			
 			
 			$scope.edit = function(trip){
@@ -194,7 +206,7 @@
 				else{
 					UserService.CreateTrip(vm.trip);
 				}
-				UserService.GetAllTrips($scope.userPersona).then(function(data){
+				UserService.GetAllTrips().then(function(data){
 					vm.myData = data;				
 				});			
 				$scope.createNewFlag = false;
@@ -202,7 +214,7 @@
 
 			$scope.delete = function(slide){
 				UserService.DeleteTrip(slide.id);
-				UserService.GetAllTrips($scope.userPersona).then(function(data){
+				UserService.GetAllTrips().then(function(data){
 					vm.myData = data;				
 				});
 			}			
