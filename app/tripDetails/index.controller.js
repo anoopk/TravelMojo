@@ -63,7 +63,19 @@
 			UserService.UploadFiles(files);
 		};
 		
-		$scope.checkModel = function(){
+		$scope.applyChanges = function(){
+			$scope.checkModel(false);
+		}
+
+		$scope.cancelChanges = function(){
+			$state.go("trips");
+		}
+
+		$scope.saveChanges = function(){
+			$scope.checkModel(true);
+		}
+		
+		$scope.checkModel = function(back){
 			//Need to convert all undefined checkboxes into false
 			if($scope.trip.public == undefined){
 				$scope.trip.public = false;
@@ -79,7 +91,9 @@
 			}						
 			if($scope.trip._id){
 				UserService.UpdateTrip($scope.trip, true).then(function () {
-					$state.go("trips");
+					if(done){
+						$state.go("trips");
+					}
 				});
 			}
 			else{

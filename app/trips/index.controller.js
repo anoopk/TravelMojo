@@ -20,25 +20,6 @@
 			$scope.active = null;
 			$scope.noWrapSlides = false;
 			$scope.slideInterval = 5000;					
-			var items = [
-				{ Id:  1, Client: 'Client 01', Code: 'AAAAA', Enabled: false, Sport: 'Football',   Country: 'Japan'          },
-				{ Id:  2, Client: 'Client 02', Code: 'BBBBB', Enabled: true,  Sport: 'Basketball', Country: 'United Kingdom' },
-				{ Id:  3, Client: 'Client 03', Code: 'CCCCC', Enabled: false, Sport: 'Running',    Country: 'France'         },
-				{ Id:  4, Client: 'Client 04', Code: 'DDDDD', Enabled: false, Sport: 'Climbing',   Country: 'France'         },
-				{ Id:  5, Client: null,        Code: 'FFFFF', Enabled: false, Sport: 'Football',   Country: 'France'         },
-				{ Id:  6, Client: 'Client 06', Code: 'CCCCC', Enabled: true,  Sport: 'Basketball', Country: 'Russia'         },
-				{ Id:  7, Client: 'Client 07', Code: 'AAAAA', Enabled: false, Sport: 'Running',    Country: 'Germany'        },
-				{ Id:  8, Client: 'Client 08', Code: 'CCCCC', Enabled: true,  Sport: 'Football',   Country: 'Germany'        },
-				{ Id:  9, Client: 'Client 09', Code: 'BBBBB', Enabled: true,  Sport: 'Football',   Country: ''               },
-				{ Id: 10, Client: 'Client 10', Code: 'DDDDD', Enabled: true,  Sport: 'Football',   Country: 'United Kingdom' },
-				{ Id: 11, Client: 'Client 11', Code: 'CCCCC', Enabled: true,  Sport: 'Tennis',     Country: 'United Kingdom' },
-				{ Id: 12, Client: 'Client 12', Code: 'BBBBB', Enabled: true,  Sport: 'Running',    Country: 'United Kingdom' },
-				{ Id: 13, Client: 'Client 13', Code: 'FFFFF', Enabled: false, Sport: 'Basketball', Country: 'Russia'         },
-				{ Id: 14, Client: 'Client 14', Code: 'DDDDD', Enabled: false, Sport: 'Tennis',     Country: 'Germany'        },
-				{ Id: 15, Client: 'Client 15', Code: 'AAAAA', Enabled: false, Sport: 'Basketball', Country: 'Japan'          }
-			];			
-			$scope.dataSource = items;					
-			$scope.filteredDataSource = $scope.dataSource;					
 			$scope.slides = [];
 					
 			UserService.GetCurrent().then(function (user) {				
@@ -55,6 +36,10 @@
 						data[i].id = i;
 						$scope.slides.push(data[i]);					
 					}
+					if($scope.slides.length == 0){
+						$scope.noTripsHosted = true;
+					}
+						console.log("$scope.noTripsHosted", $scope.noTripsHosted);					
 				});
 			});
 
@@ -98,22 +83,14 @@
 			$scope.allNotifications	= null;		
 			$scope.selectedItem = 'All';
 			$scope.filter = {};
+			$scope.noTripsHosted = false;
 			
 			function initController() {
 				$rootScope.filters = {};
-				$rootScope.filters.cancelled = false;
-				$rootScope.filters.published = false;
-				if($stateParams.filter == "true"){
-					$rootScope.filters = {};
-					$rootScope.filters.cancelled = true;
-					$rootScope.filters.published = true;
-					$rootScope.filters.private = true;
-				}
 				$scope.notificationStartIndex = 0;				
 				UserService.GetCurrent().then(function (user) {				
 					vm.user = user;				
 					if($stateParams.filter == false){
-						console.log("showMessages", $stateParams.showMessages);
 						UserService.GetNotifications(vm.user.username).then(function(data){								
 							$scope.allNotifications = data;										
 							$scope.notifications = data;
@@ -203,13 +180,11 @@
 			
 			$scope.create = function(){
 				vm.trip = {};
-				vm.trip.image = 'https://unsplash.it/900/500';
+				vm.trip.image = 'https://unsplash.it/900/510';
 				vm.trip.username = vm.user.username;
 				vm.trip.userid = vm.user._id;			
 				vm.trip.createdOn = new Date();
-				$state.go("tripDetails");
-				
-				//$scope.createNewFlag = true;
+				$state.go("tripDetails");				
 			}			
 
 			$scope.save = function(){
