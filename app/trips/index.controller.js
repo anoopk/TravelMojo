@@ -170,6 +170,10 @@
 				$scope.edit($scope.activeSlide);
 			}		
 			
+			$scope.showTripDetails = function(trip){
+				$state.go('tripDetails', {tripId : trip._id});
+			}
+			
 			$scope.clone = function(trip){
 				trip.createdOn = new Date();			
 				UserService.CreateTrip(trip);

@@ -7,6 +7,9 @@
 	
 		<div uib-carousel id="tripCarousel" active="active" interval="slideInterval" no-wrap="noWrapSlides">
 			<div uib-slide active="slide.active" ng-repeat="slide in slides track by slide.id" index="slide.id">	  
+				<div id="details" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
+					<button ng-cloak class="btn btn-primary" data-toggle="tooltip" title="Show Details" ng-click="showTripDetails(slide)"><i class="fa fa-binoculars"></i>
+				</div>					
 				<div id="filter" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
 					<button ng-cloak ng-show="!myTrips" class="btn btn-primary" data-toggle="tooltip" title="Show only my trips" ng-click="filterTrips()"><i class="fa fa-user"></i>
 				</div>					
