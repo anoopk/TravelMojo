@@ -4,7 +4,8 @@
     angular
         .module('app', ['ui.router', 'ui.bootstrap', 'ngMaterial', '720kb.socialshare', 'socialLogin', 
 						'textAngular', 'facebook', 'ngSanitize', 'schemaForm', 'pickadate', 'md.chips.select', 
-						'ngFileUpload'])
+						'ngFileUpload', 'mgcrea.ngStrap', 'mgcrea.ngStrap.modal', 'pascalprecht.translate', 
+						'ui.select', 'mgcrea.ngStrap.select'])
         .config(config)
 		.controller('facebookLogin', [
     '$scope',
