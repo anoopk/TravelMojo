@@ -1,4 +1,5 @@
 <div>
+	<jqcloud words="tags" width="500" height="350" colors="{{colors}}" delay="10" steps="7" font-size="{from:0.09, to:0.04}"></jqcloud>
 	<md-content layout-padding>
 		<form name="projectForm">
 		<div layout="row">
@@ -24,7 +25,10 @@
 		<label>Quick Description</label>
 		<textarea ng-model="trip.quickDescription"></textarea>
 		</md-input-container>
-
+		
+		<label>Tags</label>
+		<tags-input ng-model="tags" add-on-paste="true"></tags-input>
+		
 		<div layout="row" style="padding-bottom:30px">		
 		<md-input-container>
 		  <md-select  style="padding-left:0px" ng-model="trip.budget" placeholder="Budget">

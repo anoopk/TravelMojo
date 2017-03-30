@@ -3,7 +3,6 @@
     <button type="button" class="btn btn-info btn-sm" ng-click="changeTab($event)">Description</button>
 	<button type="button" class="btn btn-info btn-sm" ng-click="changeTab($event)">Itinerary</button>	
 	<button type="button" class="btn btn-info btn-sm" ng-click="changeTab($event)">Departures</button>
-	<button type="button" class="btn btn-info btn-sm" ng-click="changeTab($event)">Conversations</button>
 	<button type="button" class="btn btn-warning btn-sm" ng-click="applyChanges()">Apply and Continue</button>	
 	<button type="button" class="btn btn-primary btn-sm" ng-click="saveChanges()">Save</button>
 	<button type="button" class="btn btn-danger btn-sm" ng-click="cancelChanges()">Cancel</button>
@@ -22,31 +21,6 @@
 	</div>
 
     </div>	
-    <div uib-accordion-group ng-cloak class="panel-info" is-open="items['conversations']" is-disabled="items['conversations'].disabled">
-		<div style="max-height:100%;overflow:auto;" id="notificationList">
-		<md-list>
-			<md-list-item class="md-3-line contact-item" id="notification" ng-repeat="notification in notifications">
-				<img ng-src="http://lorempixel.com/50/50/people/?1/" class="md-avatar" alt="{{user.name}}" />
-				<div class="md-list-item-text compact" layout="column">
-				<div>
-				<p style="padding-left: 0%;" class="text-primary"><strong>{{notification.name}}</strong>
-				<a href="#">
-				<i style="padding-left: 0%;" class="fa fa-envelope-square fa-2x text-success"></i>
-				</a>										
-				<a ng-show=(notification.unread) href="#">
-				<i style="padding-left: 2%;" class="fa fa-check-square fa-2x text-danger"></i>
-				</a>
-				</p>
-				</div>
-				<p style="width: 20%;"><small>{{notification.name}} on {{notification.name}}</small></p>				
-				<p><small>{{notification.date}}</small></p>				
-				</div>
-				<md-divider style="width: 25%;" ng-if="!$last"></md-divider>			
-			</md-list-item>	
-		</md-list>
-		</div>	
-	</div>
-
     </div>	
   </uib-accordion>
 </div>

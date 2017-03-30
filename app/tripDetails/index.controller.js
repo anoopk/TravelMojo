@@ -28,19 +28,50 @@
         vm.user = null;
 		var tripSchema = {};
 		var now = new Date();
-		$scope.items = {};
 		$scope.activites = {};				
         initController();	
 		$scope.singleDay = {};
 		$scope.oneAtATime = true;			
 		$scope.notifications = [{name:"Alfreds Futterkiste", comment:"Can we make this cheaper ?", date:now, unread:true, upvotes:3}, {name:"Berglunds snabbköp", comment:"Is an extra night here a possibilty ?", date:now, unread:true}, {name:"Centro comercial Moctezuma", comment:"Extra night in exchange of which place ?", replyTo:"Berglunds snabbköp", date:now}, {name:"Ernst Handel", comment:"I would like to throw in a traditional Chilean lunch at my Grandmas place, just 20 minutes of town. Just 'like' this and I will use that as a guest count. Have talked to her and she would love to have us all over.", date:now, unread:false, upvotes:6}];		
-		$scope.items = {"description":true, "itinerary":false, "departures":false, "coversations":false};		
+		$scope.items = {"description":true, "itinerary":false, "departures":false};		
 		$scope.trip = {};			
 		$scope.trip.itinerary = [];				
 		$scope.trip.departures = [];				
-		$scope.trip.notes = "I do not need any assistance at this point int time.";		
+		$scope.trip.notes = "I do not need any assistance at this point in time.";		
 		$scope.trip.length = 0;
         function initController() {	
+		$scope.tags = [
+			{text: "Himalayas", weight: 13},
+			{text: "Mountains", weight: 10.5},
+			{text: "Outdoors", weight: 9.4},
+			{text: "Trekking", weight: 8},
+			{text: "Amet", weight: 6.2},
+			{text: "Adventure", weight: 5},
+			{text: "Budget", weight: 5},
+			{text: "Universal", weight: 5},
+			{text: "Medium", weight: 5},
+			{text: "Rishikesh", weight: 4},
+			{text: "Uttaranchal", weight: 4},
+			{text: "Pellentesque", weight: 3},
+			{text: "habitant", weight: 3},
+			{text: "morbi", weight: 3},
+			{text: "tristisque", weight: 3},
+			{text: "senectus", weight: 3},
+			{text: "et netus", weight: 3},
+			{text: "et malesuada", weight: 3},
+			{text: "fames", weight: 2},
+			{text: "ac turpis", weight: 2},
+			{text: "egestas", weight: 2},
+			{text: "Aenean", weight: 2},
+			{text: "vestibulum", weight: 2},
+			{text: "elit", weight: 2},
+			{text: "sit amet", weight: 2},
+			{text: "metus", weight: 2},
+			{text: "adipiscing", weight: 2},
+			{text: "ut ultrices", weight: 2}
+		];
+    
+			$scope.colors = ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976"];		
 			$scope.activites = [{id:1, name : 'Suicide Bombing'}, {id:2, name : 'Paragliding'}, {id:3, name : 'Diving'}, {id:4, name : 'Trekking'}];
 			$scope.budgets = [{id:1, name : 'Luxury'}, {id:2, name : 'Budget'}, {id:3, name : 'Backpacker'}];
 			$scope.difficulties = [{id:1, name : 'Extreme'}, {id:2, name : 'Medium'}, {id:3, name : 'Easy'}];
@@ -163,12 +194,13 @@
 		
 		$scope.messages = function(day){			
 			$scope.day = day;		
+			console.log($scope.notifications[day], $scope.trip);
 			$scope.openDialog = function() {	
 				$mdDialog.show({
 					parent: angular.element(document.body),
 					scope:$scope,
 					preserveScope: true,
-					clickOutsideToClose:false,
+					clickOutsideToClose:true,
 					templateUrl: "tripDetails/messages.html",
 					controller: DialogController
 				});
@@ -193,7 +225,7 @@
 					parent: angular.element(document.body),
 					scope:$scope,
 					preserveScope: true,
-					clickOutsideToClose:false,
+					clickOutsideToClose:true,
 					templateUrl: "tripDetails/singleDay.html",
 					controller: DialogController
 				});
@@ -248,7 +280,7 @@
 		$scope.changeTab = function(evt){
 			console.log($scope.trip.itinerary);
 			var target = evt.currentTarget.innerText.toLowerCase();
-			$scope.items = {"description":false, "itinerary":false, "departures":false, "coversations":false};					
+			$scope.items = {"description":false, "itinerary":false, "departures":false};					
 			$scope.items[target] = true;
 		}
     }
