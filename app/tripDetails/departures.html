@@ -8,6 +8,8 @@
 			<div class="md-list-item-text">		  
 				<i class="fa fa-pencil" ng-click="editDeparture(departure.date)"></i>			
 				<i class="fa fa-trash-o" ng-click="cancelDeparture(departure.date)"></i>
+				<i class="fa fa-envelope-o" ng-click="cancelDay(itinerary.day)"></i>
+				<i style="padding-left:2px"class="fa fa-paperclip" ng-click="cancelDay(itinerary.day)"></i>									
 				<i class="fa fa-angle-right" aria-hidden="true"></i>
 				<span class="label label-info">{{ departure.date | date:'shortDate' }}</span> {{departure.description}}
 				<button type="button" class="btn btn-sm btn-primary">Price <span class="badge">{{departure.price}} USD</span></button>					

@@ -1,5 +1,5 @@
 ﻿<%- include('partials/header') %>
-<div class="form-container">
+<div  style="background: linear-gradient(black, white); width:80%; height:50%; padding:5%"  class="form-container">
     <h2>Login</h2>
     <% if(locals.error) { %>
         <div class="alert alert-danger"><%= error %></div>
@@ -23,7 +23,9 @@
         </div>
 		<div ng-controller="facebookController" class="container">
 			<div class="row">
-			<button type="button" class="btn btn-primary btn-large" data-ng-show="!logged" data-ng-disabled="!facebookReady" data-ng-click="IntentLogin()">Login with Facebook</button>
+			<button type="button" class="btn btn-primary btn-large" data-ng-show="!logged" data-ng-disabled="!facebookReady" data-ng-click="IntentLogin()">Facebook</button>
+			<button type="button" class="btn btn-primary btn-large" data-ng-show="!logged" data-ng-disabled="!facebookReady" data-ng-click="IntentLogin()">Twitter</button>
+			<button type="button" class="btn btn-primary btn-large" data-ng-show="!logged" data-ng-disabled="!facebookReady" data-ng-click="IntentLogin()">Google+</button>
 			<div>
 			<debug val="user"></debug>
 			</div>

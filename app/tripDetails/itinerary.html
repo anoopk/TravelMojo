@@ -8,6 +8,8 @@
 					<img ng-src="https://unsplash.it/1350/650" class="md-avatar" alt="{{user.name}}" />				
 					<i class="fa fa-pencil" ng-click="editDay(itinerary.day)"></i>			
 					<i class="fa fa-trash-o" ng-click="cancelDay(itinerary.day)"></i>
+					<i class="fa fa-envelope-o" ng-click="messages(itinerary.day)"></i>
+					<a style="padding-left:4px"><i class="fa fa-comment-o" ng-click="comment(itinerary.day)"></i></a>					
 					<i class="fa fa-angle-right" aria-hidden="true"></i>
 					<span class="label label-info">Day {{ itinerary.day }}:</span>				
 					{{itinerary.description}}					

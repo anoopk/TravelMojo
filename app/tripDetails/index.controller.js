@@ -33,7 +33,7 @@
         initController();	
 		$scope.singleDay = {};
 		$scope.oneAtATime = true;			
-		$scope.notifications = [{name:"Alfreds Futterkiste", date:now, unread:true}, {name:"Berglunds snabbköp", date:now, unread:true}, {name:"Centro comercial Moctezuma", date:now}, {name:"Ernst Handel", date:now, unread:false}];		
+		$scope.notifications = [{name:"Alfreds Futterkiste", comment:"Can we make this cheaper ?", date:now, unread:true, upvotes:3}, {name:"Berglunds snabbköp", comment:"Is an extra night here a possibilty ?", date:now, unread:true}, {name:"Centro comercial Moctezuma", comment:"Extra night in exchange of which place ?", replyTo:"Berglunds snabbköp", date:now}, {name:"Ernst Handel", comment:"I would like to throw in a traditional Chilean lunch at my Grandmas place, just 20 minutes of town. Just 'like' this and I will use that as a guest count. Have talked to her and she would love to have us all over.", date:now, unread:false, upvotes:6}];		
 		$scope.items = {"description":true, "itinerary":false, "departures":false, "coversations":false};		
 		$scope.trip = {};			
 		$scope.trip.itinerary = [];				
@@ -112,7 +112,7 @@
 			.hideDelay(3000)
 			);
 		};	
-		
+	
 		$scope.addDeparture = function(date){		
 			$scope.openDialog = function() {	
 				$mdDialog.show({
@@ -137,6 +137,49 @@
 					}
 				}		
 			}
+			$scope.openDialog();
+		}
+
+		$scope.comment = function(day){			
+			$scope.day = day;		
+			$scope.openDialog = function() {	
+				$mdDialog.show({
+					parent: angular.element(document.body),
+					scope:$scope,
+					preserveScope: true,
+					clickOutsideToClose:true,
+					templateUrl: "tripDetails/comment.html",
+					controller: DialogController
+				});
+				
+				function DialogController($scope, $mdDialog) {
+					$scope.closeDialog = function() {
+						$mdDialog.hide();
+					};
+				};				
+			}		
+			$scope.openDialog();
+		}
+		
+		$scope.messages = function(day){			
+			$scope.day = day;		
+			$scope.openDialog = function() {	
+				$mdDialog.show({
+					parent: angular.element(document.body),
+					scope:$scope,
+					preserveScope: true,
+					clickOutsideToClose:false,
+					templateUrl: "tripDetails/messages.html",
+					controller: DialogController
+				});
+				
+				function DialogController($scope, $mdDialog) {
+					$scope.closeDialog = function() {
+						console.log(">>>>>>>>>>>>>>>> ", $scope.day);
+						$mdDialog.hide();
+					};
+				};				
+			}		
 			$scope.openDialog();
 		}
 		
