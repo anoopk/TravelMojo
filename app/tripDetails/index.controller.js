@@ -83,6 +83,10 @@
 				if($stateParams.tripId){
 					UserService.GetTrip(vm.user.username, $stateParams.tripId).then(function (trip){
 						$scope.trip = trip;
+						$scope.trip.comments = $scope.notifications;
+						if($scope.trip.itinerary[1]){
+							$scope.trip.itinerary[1].comments = $scope.notifications;
+						}
 					});
 				}
             });
@@ -122,7 +126,7 @@
 			}						
 			if($scope.trip._id){
 				UserService.UpdateTrip($scope.trip, true).then(function () {
-					if(done){
+					if(back){
 						$state.go("trips");
 					}
 				});
@@ -171,8 +175,30 @@
 			$scope.openDialog();
 		}
 
-		$scope.comment = function(day){			
-			$scope.day = day;		
+		$scope.upVote = function(day, id){			
+			if(day.comments[id].upvotes){
+				day.comments[id].upvotes++;
+			}
+			else{
+				day.comments[id].upvotes = 1;
+			}
+		}
+		
+		$scope.addComment = function(day, comment){			
+			$scope.comment = {};
+			$scope.comment.date = new Date();
+			$scope.comment.name = vm.user.username;
+			$scope.comment.upVote = 0;
+			$scope.comment.unread = true;
+			$scope.comment.unpublished = true;
+			if(comment){
+				$scope.comment.replyTo = comment.name;
+			}
+			$scope.comment.comment = "";
+			
+			if(day.comments === undefined){
+				day.comments = [];
+			}
 			$scope.openDialog = function() {	
 				$mdDialog.show({
 					parent: angular.element(document.body),
@@ -185,6 +211,9 @@
 				
 				function DialogController($scope, $mdDialog) {
 					$scope.closeDialog = function() {
+						if($scope.comment.comment.length > 0){
+							day.comments.push($scope.comment);
+						}
 						$mdDialog.hide();
 					};
 				};				
@@ -192,9 +221,8 @@
 			$scope.openDialog();
 		}
 		
-		$scope.messages = function(day){			
+		$scope.listMessages = function(day){			
 			$scope.day = day;		
-			console.log($scope.notifications[day], $scope.trip);
 			$scope.openDialog = function() {	
 				$mdDialog.show({
 					parent: angular.element(document.body),
@@ -216,7 +244,7 @@
 		}
 		
 		$scope.addDay = function(day){			
-			$scope.day = day;		
+			$scope.singleDay = day;		
 			if(null == day){
 				$scope.singleDay = {};
 			}
@@ -235,8 +263,7 @@
 						if(undefined === $scope.trip.itinerary){
 							$scope.trip.itinerary = [];
 						}
-						console.log($scope.day, $scope.trip.itinerary);
-						if(undefined === $scope.day && $scope.singleDay.day){
+						if($scope.singleDay.day){
 							$scope.trip.itinerary.push($scope.singleDay);
 						}
 						$mdDialog.hide();
@@ -247,10 +274,10 @@
 		}
 	
 		$scope.editDay = function(day){	
-			var itinerary = $scope.trip.itinerary.filter(function(it){
-				return it.day == day;
-			});	
-			$scope.singleDay = 	itinerary[0];
+			//var itinerary = $scope.trip.itinerary.filter(function(it){
+			//	return it.day == day;
+			//});	
+			$scope.singleDay = 	day;
 			$scope.addDay(day);			
 		}
 		
