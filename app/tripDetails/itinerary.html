@@ -5,7 +5,7 @@
 		<div ng-repeat="day in trip.itinerary">
 			<md-list-item class="md-3-line">
 				<div class="md-list-item-text">		  
-					><img ng-src="https://unsplash.it/1350/650" class="md-avatar" alt="{{user.name}}" />				
+					<img ng-src="https://unsplash.it/1350/650" class="md-avatar" alt="{{user.name}}" />				
 					<a><i class="fa fa-pencil" ng-click="editDay(day)"></i></a>			
 					<a><i class="fa fa-trash-o" ng-click="cancelDay(day)"></i></a>
 					<a ng-show="day.comments.length">

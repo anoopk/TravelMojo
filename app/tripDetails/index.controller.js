@@ -70,7 +70,7 @@
 			{text: "adipiscing", weight: 2},
 			{text: "ut ultrices", weight: 2}
 		];
-    
+			
 			$scope.colors = ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976"];		
 			$scope.activites = [{id:1, name : 'Suicide Bombing'}, {id:2, name : 'Paragliding'}, {id:3, name : 'Diving'}, {id:4, name : 'Trekking'}];
 			$scope.budgets = [{id:1, name : 'Luxury'}, {id:2, name : 'Budget'}, {id:3, name : 'Backpacker'}];
@@ -304,6 +304,10 @@
 			});
 		}
 
+		$scope.removeComment = function(day, $index){
+			day.comments.splice($index);	
+		}
+		
 		$scope.changeTab = function(evt){
 			console.log($scope.trip.itinerary);
 			var target = evt.currentTarget.innerText.toLowerCase();
