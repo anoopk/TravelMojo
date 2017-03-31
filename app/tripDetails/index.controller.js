@@ -83,10 +83,10 @@
 				if($stateParams.tripId){
 					UserService.GetTrip(vm.user.username, $stateParams.tripId).then(function (trip){
 						$scope.trip = trip;
-						$scope.trip.comments = $scope.notifications;
-						if($scope.trip.itinerary[1]){
-							$scope.trip.itinerary[1].comments = $scope.notifications;
-						}
+						//$scope.trip.comments = $scope.notifications;
+						//if($scope.trip.itinerary[1]){
+						//	$scope.trip.itinerary[1].comments = $scope.notifications;
+						//}
 					});
 				}
             });
