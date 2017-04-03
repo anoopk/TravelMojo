@@ -456,3 +456,8 @@ form .progress {
     background: orange;
     width: 0;
 }
+.not-active {
+	pointer-events: none;
+	cursor: default;
+	color: #e1e1e1;
+}
