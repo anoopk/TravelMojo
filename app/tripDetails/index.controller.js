@@ -176,6 +176,10 @@
 		}
 
 		$scope.upVote = function(day, id){			
+			if(day.comments[id].voters === undefined){
+				day.comments[id].voters = [];
+			}
+			day.comments[id].voters.push(vm.user.username); 
 			if(day.comments[id].upvotes){
 				day.comments[id].upvotes++;
 			}
@@ -219,6 +223,19 @@
 				};				
 			}		
 			$scope.openDialog();
+		}
+		
+		$scope.hasAVote = function(day, id){
+			//Cannot upvote own comment
+			if(day.comments[id].name == vm.user.username){
+				return false;
+			};			
+			if (_.contains(day.comments[id].voters, vm.user.username)) {
+				console.log("Needle found.");
+				return false;			  
+			};			
+			
+			return true;
 		}
 		
 		$scope.listMessages = function(day){			
