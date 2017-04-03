@@ -175,6 +175,13 @@
 			$scope.openDialog();
 		}
 
+		$scope.ownComment = function(day, id){
+			if(day.comments[id].name == vm.user.username){ //or if administrator
+				return true;
+			};				
+			return false;
+		}
+		
 		$scope.upVote = function(day, id){			
 			if(day.comments[id].voters === undefined){
 				day.comments[id].voters = [];
