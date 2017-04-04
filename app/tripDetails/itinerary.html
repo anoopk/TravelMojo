@@ -9,7 +9,7 @@
 					<a><i class="fa fa-pencil" ng-click="editDay(day)"></i></a>			
 					<a><i class="fa fa-trash-o" ng-click="cancelDay(day)"></i></a>
 					<a>
-						<i class="fa fa-envelope-o" ng-class="{'not-active' : day.comments.length == 0}" ng-click="listMessages(day)"></i>
+						<i class="fa fa-envelope-o" ng-class="{'not-active' : !day.comments || !day.comments}" ng-click="listMessages(day)"></i>
 						<!--<i class="fa fa-stack-1x text-danger fa-1x"><strong>8</strong></i>-->							
 					</a>										
 					<a style="padding-left:4px"><i class="fa fa-comment-o" ng-click="addComment(day)"></i></a>					
