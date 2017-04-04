@@ -6,7 +6,12 @@
 		</div>
 	
 		<div uib-carousel id="tripCarousel" active="active" interval="slideInterval" no-wrap="noWrapSlides">
-			<div uib-slide active="slide.active" ng-repeat="slide in slides track by slide.id" index="slide.id">	  
+			<div uib-slide active="slide.active" ng-repeat="slide in slides track by slide.id" index="slide.id">	  			
+				<div id="vote" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
+					<button ng-disabled='!hasAVote(slide)' ng-cloak class="btn btn-primary" data-toggle="tooltip" title="Vote for this trip" ng-click="upVote(slide)">
+					<i class="fa fa-thumbs-up"></i>
+					<i class="fa fa-stack-1x text-danger fa-1x"><strong>{{slide.votes}}</strong></i>							
+				</div>								
 				<div id="details" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
 					<button ng-cloak class="btn btn-primary" data-toggle="tooltip" title="Show Details" ng-click="showTripDetails(slide)"><i class="fa fa-binoculars"></i>
 				</div>					

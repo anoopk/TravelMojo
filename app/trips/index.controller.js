@@ -170,6 +170,29 @@
 				$scope.edit($scope.activeSlide);
 			}		
 			
+			$scope.upVote = function(slide){
+				if(slide.voters === undefined){
+					slide.voters = [];					
+				}			
+				slide.voters.push(vm.user.username);				
+				
+				if(slide.votes === undefined){
+					slide.votes = 0;
+				}
+				slide.votes++;				
+				UserService.UpdateTrip(slide);				
+			}
+			
+			$scope.hasAVote = function(trip){
+				if (_.contains(trip.voters, vm.user.username)){
+					return false;
+				}				
+				if (trip.userName == vm.user.username){
+					return false;
+				}
+				return true;
+			}
+			
 			$scope.showTripDetails = function(trip){
 				$state.go('tripDetails', {tripId : trip._id});
 			}

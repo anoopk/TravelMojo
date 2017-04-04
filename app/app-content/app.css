@@ -44,6 +44,13 @@ a.button{
     
    padding: 5px;
 }
+#vote{
+   position: absolute;
+   top: 80px;
+   left: 870px; 
+    
+   padding: 5px;
+}
 #details{
    position: absolute;
    top: 80px;

@@ -175,6 +175,20 @@
 			$scope.openDialog();
 		}
 
+		$scope.filterMessages = function(filterBy){
+			$scope.filterBy = filterBy;
+		}
+		
+		$scope.getMessages = function(day){
+			var comms = day.comments;
+			if($scope.filterBy){
+				var comms = day.comments.filter(function (comm){
+					return comm[name] == $scope.filterBy || comm.replyTo == $scope.filterBy;
+				});
+			}
+			return comms;
+		}
+		
 		$scope.ownComment = function(day, id){
 			if(day.comments[id].name == vm.user.username){ //or if administrator
 				return true;
@@ -246,6 +260,7 @@
 		}
 		
 		$scope.listMessages = function(day){			
+			$scope.filterBy = null;		
 			$scope.day = day;		
 			$scope.openDialog = function() {	
 				$mdDialog.show({
@@ -259,7 +274,6 @@
 				
 				function DialogController($scope, $mdDialog) {
 					$scope.closeDialog = function() {
-						console.log(">>>>>>>>>>>>>>>> ", $scope.day);
 						$mdDialog.hide();
 					};
 				};				
