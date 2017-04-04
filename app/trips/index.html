@@ -7,21 +7,21 @@
 	
 		<div uib-carousel id="tripCarousel" active="active" interval="slideInterval" no-wrap="noWrapSlides">
 			<div uib-slide active="slide.active" ng-repeat="slide in slides track by slide.id" index="slide.id">	  			
-				<div id="vote" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
+				<div id="vote" ng-show="showButtons" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
 					<button ng-disabled='!hasAVote(slide)' ng-cloak class="btn btn-primary" data-toggle="tooltip" title="Vote for this trip" ng-click="upVote(slide)">
 					<i class="fa fa-thumbs-up"></i>
 					<i class="fa fa-stack-1x text-danger fa-1x"><strong>{{slide.votes}}</strong></i>							
 				</div>								
-				<div id="details" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
+				<div id="details" ng-show="showButtons" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
 					<button ng-cloak class="btn btn-primary" data-toggle="tooltip" title="Show Details" ng-click="showTripDetails(slide)"><i class="fa fa-binoculars"></i>
 				</div>					
-				<div id="filter" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
+				<div id="filter" ng-show="showButtons" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
 					<button ng-cloak ng-show="!myTrips" class="btn btn-warning" data-toggle="tooltip" title="Show only my trips" ng-click="filterTrips()"><i class="fa fa-user"></i>
 				</div>					
-				<div id="filter" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
+				<div id="filter" ng-show="showButtons" style="float: left; padding: 1px;" class="btn-group" data-toggle="buttons">
 					<button ng-cloak ng-show="myTrips" class="btn btn-warning" data-toggle="tooltip" title="Show all trips" ng-click="filterTrips()"><i class="fa fa-users"></i>			
 				</div>	
-				<i id="cog" data-toggle="tooltip" title="Manage Trip" ng-show="editableSlide" class="fa fa-cog fa-3x" aria-hidden="true" ng-mouseover="mouseenter()"></i>			
+				<i id="cog" data-toggle="tooltip" title="Manage Trip" class="fa fa-cog fa-3x" aria-hidden="true" ng-mouseover="mouseenter()"></i>			
 				<a  data-toggle="tooltip" title="Tweet this" href="#" socialshare
 				socialshare-provider="twitter"
 				socialshare-text="720kb AngularJS Socialshare"
@@ -42,7 +42,7 @@
 				socialshare-url="http://720kb.net">
 				<i id="cog4" class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i>
 				</a>							
-				<a ng-show="editableSlide" id="cog5">
+				<a ng-show="showButtons" id="cog5">
 					<button class="btn btn-primary" data-toggle="tooltip" title="Send\Receive messages" ng-model="checkModel.messages" ng-click="actionInitiated('shpwMessages', slide)">
 						<i class="fa fa-bell"></i>
 						<i class="fa fa-stack-1x text-danger fa-1x"><strong>{{notificationCount}}</strong></i>							
