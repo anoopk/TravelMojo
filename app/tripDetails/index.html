@@ -9,14 +9,14 @@
     <!--<button type="button" class="btn btn-default btn-sm" ng-click="status.isFirstDisabled = ! status.isFirstDisabled">Enable / Disable first panel</button>-->
   </p>
   <uib-accordion close-others="oneAtATime">
-    <div uib-accordion-group ng-cloak class="panel-info" is-open="items['description']" is-disabled="status.isFirstDisabled">
+    <div uib-accordion-group ng-cloak heading ="Description" class="panel-info" is-open="items['description']" is-disabled="status.isFirstDisabled">
 		<div ng-include="'tripDetails/description.html'"></div>	
 		<!--<form sf-schema="schema" sf-form="forms['description'].form" sf-model="model"></form>-->
     </div>
-    <div uib-accordion-group ng-cloak class="panel-info" is-open="items['itinerary']" is-disabled="items['itinerary'].disabled">
+    <div uib-accordion-group ng-cloak heading ="Itinerary" class="panel-info" is-open="items['itinerary']" is-disabled="items['itinerary'].disabled">
 		<div class="content-grid" ng-include="'tripDetails/itinerary.html'"></div>	  	
     </div>		
-    <div uib-accordion-group ng-cloak class="panel-info" is-open="items['departures']" is-disabled="status.isFirstDisabled">
+    <div uib-accordion-group ng-cloak heading ="Departures" class="panel-info" is-open="items['departures']" is-disabled="status.isFirstDisabled">
 		<div class="content-grid" ng-include="'tripDetails/departures.html'"></div>
 	</div>
 
