@@ -322,7 +322,7 @@
 		$scope.cancelDay = function(day){
 			$scope.singleDay = null;
 			$scope.trip.itinerary = $scope.trip.itinerary.filter(function(it){
-				return it.day != day;
+				return it.day != day.day;
 			});
 		}
 
