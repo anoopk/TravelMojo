@@ -194,7 +194,7 @@
 			}
 			
 			$scope.showTripDetails = function(trip){
-				$state.go('tripDetails', {tripId : trip._id});
+				$state.go('tripDetailsStatic', {tripId : trip._id});
 			}
 			
 			$scope.clone = function(trip){

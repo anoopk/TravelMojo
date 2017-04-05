@@ -143,6 +143,13 @@
                 controllerAs: 'vm',
                 data: { activeTab: 'account' }
             })            
+			.state('tripDetailsStatic', {
+                url: '/tripDetailsStatic/:tripId',
+                templateUrl: 'tripDetailsStatic/index.html',
+                controller: 'TripDetailsStatic.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'trips' }
+            })									
 			.state('tripDetails', {
                 url: '/tripDetails/:tripId',
                 templateUrl: 'tripDetails/index.html',
