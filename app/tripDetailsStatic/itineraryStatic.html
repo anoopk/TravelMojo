@@ -1,0 +1,31 @@
+<div ng-cloak layout-gt-sm="row" layout="column">
+  <div flex-gt-sm="50" flex>
+    <md-content>
+      <md-list class="md-dense" flex>
+		<div ng-repeat="day in trip.itinerary">
+			<md-list-item class="md-3-line">
+				<div class="md-list-item-text">		  
+					<img ng-src="https://unsplash.it/1350/650" class="md-avatar" alt="{{user.name}}" />				
+					<a>
+						<i class="fa fa-envelope-o" ng-class="{'not-active' : !day.comments || !day.comments}" ng-click="listMessages(day)"></i>
+						<!--<i class="fa fa-stack-1x text-danger fa-1x"><strong>8</strong></i>-->							
+					</a>										
+					<a style="padding-left:4px"><i class="fa fa-comment-o" ng-click="addComment(day)"></i></a>					
+					<i class="fa fa-angle-right" aria-hidden="true"></i>
+					<span class="label label-info">Day {{ day.day }}:</span>				
+					{{day.description}}					
+					<md-chips ng-model="itinerary.activities" readonly="true" md-removable="false" md-max-chips="10">
+						<md-chip-template>
+							{{$chip}}
+						</md-chip-template>
+					</md-chips>						
+				</div>
+			</md-list-item>
+        <md-divider ></md-divider>			
+		</div>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </div>
+</div>
+

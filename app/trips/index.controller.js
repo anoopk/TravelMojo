@@ -70,7 +70,7 @@
 			$scope.selectedItem = 'All';
 			$scope.filter = {};
 			$scope.noTripsHosted = false;
-			$scope.myTrips = true;
+			$scope.myTrips = false;
 			
 			function initController() {
 				$rootScope.filters = {};

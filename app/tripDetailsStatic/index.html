@@ -1,0 +1,78 @@
+﻿<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.teal-red.min.css">
+<style>
+	.content-column {
+		background-color: #90CAF9;
+		padding: 30px;
+	}
+	.content-column h2 {
+		font-size: 1.6em;
+		margin-top: 0;
+		margin-bottom: 10px;
+	}
+	.content-grid {
+		padding: 3%;
+		max-width: 100%;
+	}
+</style>
+
+</head>
+<body>
+<div style="background: linear-gradient(black, grey);" class="content-grid mdl-grid">
+  <div class="mdl-cell mdl-cell--4-col">
+	<img style="max-height:350px" ng-src="https://unsplash.it/1350/654" height="100%" width="100%"></img>
+	<div style="padding-left:3%; padding-top:3%; background: linear-gradient(white, white);">
+		<font><strong>{{trip.title}}</strong></font>	</br>
+		<div class="content-grid mdl-grid">
+			<div class="mdl-cell mdl-cell--6-col">		
+				<label class="label label-primary">Price</label></br>
+				<label class="label label-primary">Departure Date</label></br>
+				<label class="label label-primary">Departure City</label></br>
+				<label class="label label-primary">Duration</label></br>
+				<label class="label label-primary">Return City</label></br>
+				<label class="label label-primary">Group Size</label></br>
+				<label class="label label-primary">Expense</label></br>
+				<label class="label label-primary">Rating</label></br>
+				<label class="label label-primary">Difficulty</label></br>
+			</div>
+			<div class="mdl-cell mdl-cell--6-col">		
+				${{trip.price}}</br>
+				{{trip.price}}</br>
+				{{trip.meetsIn}}</br>
+				{{trip.length}}</br>
+				{{trip.endsIn}}</br>
+				{{trip.groupSize}}</br>
+				{{trip.budget}}</br>
+				{{trip.rating}}</br>
+				{{trip.difficulty}}</br>
+			</div>			
+		</div>		
+	</div>
+  </div>
+  <div  style="background: linear-gradient(black, black);" class="content-column mdl-cell mdl-cell--8-col">
+    <font color="#00c3ff" style="padding-right:5px"><strong>{{trip.title}}</strong></font>
+	<label ng-show="trip.public" class="label label-primary">Public</label>	
+	<i style="padding-left:3%" class="fa fa-thumbs-up text-danger"></i><font style="padding-left:5px" color="white" size="1">{{trip.votes}}</font>
+	<i style="padding-left:.5%" class="fa fa-envelope text-danger"></i><font color="white" size="1">{{trip.comments.length}}</font>	
+	<i style="padding-left:2.5%" class="fa fa-map-o text-danger"></i>
+	<a href="#"><i style="padding-left:2%" class="fa fa-calendar text-danger"></i></a>
+	<a style="padding-left:25%" href="#">{{trip.url}}</a>	
+	</br>
+	<label><font color="white">{{trip.quickDescription}}</font></label></br>
+	<label><font size="1" color="orange">Created by {{trip.userName}} on {{trip.createdOn | date}}</font></label>
+	<div><p style="padding:1%; background: linear-gradient(white, white);">{{trip.description}}</p></div>
+	<div style="background: linear-gradient(white, white);">
+		<font style="padding-left:5px"><strong>Itinerary</strong></font>
+		<div ng-include="'tripDetailsStatic/itineraryStatic.html'"></div>	
+	</div>		
+	<div style="padding-top:5px" style="background: linear-gradient(white, white);">
+		<font style="padding-left:5px"><strong>Comments</strong></font>
+		<div style="background: linear-gradient(white, white);" ng-include="'tripDetailsStatic/messagesStatic.html'"></div>	
+	</div>			
+	<font color="orange" ><strong>Tags</strong></font></br>		
+	<div ng-repeat="tag in trip.tags">
+	<a>{{tag.text}}</a>	
+	</div>
+</div>
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>

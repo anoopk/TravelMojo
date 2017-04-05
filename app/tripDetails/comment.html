@@ -1,0 +1,24 @@
+<div  style="padding:2%;">
+<!---
+<label class="label label-primary">To</label>
+<ui-select multiple ng-model="notification.to" theme="bootstrap" ng-disabled="disabled" close-on-select="false" title="Choose a person" remove-selected="false">
+<ui-select-match placeholder="Select person...">{{$item.name}} &lt;{{$item.email}}&gt;</ui-select-match>
+	<ui-select-choices repeat="person in notification.contacts | propsFilter: {name: $select.search, age: $select.search}">
+		<div ng-bind-html="person.name | highlight: $select.search"></div>
+		<small>
+			email: {{person.email}}
+			age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+		</small>
+	</ui-select-choices>
+</ui-select>
+<div style="padding-top:1%">
+	<label class="label label-primary">Subject</label>
+	<label class="label label-info">{{notification.subject}}</label>
+		<label class="label label-primary">Comment</label>
+</div>-->
+
+<div style="padding-top:1%;">
+	<textarea placeholder="Have your say" ng-model="comment.comment">{{comment.comment}}</textarea>
+</div>		
+	<button class="btn btn-primary" ng-click="closeDialog()">Post</button>
+</div>
