@@ -426,3 +426,9 @@ form .progress {
 	cursor: default;
 	color: #e1e1e1;
 }
+.text-block
+{
+	font-family:    "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size:      1.2rem;
+	line-height:2rem;
+}
