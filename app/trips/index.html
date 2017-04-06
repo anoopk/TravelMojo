@@ -48,9 +48,10 @@
 						<i class="fa fa-stack-1x text-danger fa-1x"><strong>{{notificationCount}}</strong></i>							
 					</button>	
 				</a>							
-				<img ng-src="{{slide.image}}" style="margin:auto;">
+				<img ng-src="{{slide.image}}" style="margin:auto;" ng-mousedown="showTripDetails(slide)">
 				<h2 id="tripTitle"><span><strong>{{slide.title}}</strong><br /></h2>
 				<div id="tripQDescription"><span>{{slide.quickDescription}}<br /></div>
+				<div id="tripHost"><span>An offering from {{slide.userName}}<br /></div>				
 				<div ng-show="slide.cancelled" id="cancelnote" class="rubber">
 				<div>
 				  Cancelled

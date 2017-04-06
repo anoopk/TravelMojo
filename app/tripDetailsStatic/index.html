@@ -48,8 +48,9 @@
 				{{trip.difficulty}}</br>
 			</div>			
 		</div>		
-	</div><hr>
+	</div><hr>	
 	<div style="padding-left:3%; padding-top:3%; background: linear-gradient(white, white);>
+		<jqcloud words="tags" width="500" height="350" colors="{{colors}}" delay="10" steps="7" font-size="{from:0.09, to:0.04}"></jqcloud>	
 		<font color="orange" ><strong>Tags</strong></font></br>		
 		<div ng-repeat="tag in trip.tags">
 			<a>{{tag.text}}</a>	

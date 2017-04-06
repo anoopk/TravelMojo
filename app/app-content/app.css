@@ -86,15 +86,21 @@ a.button{
     
    padding: 5px;
 }
+#tripHost{
+   position: absolute;
+   top: 79%;
+   left: 180px;     
+   color: orange;
+}
 #tripTitle{
    position: absolute;
-   top: 480px;
+   top: 73%;
    left: 180px;     
    color: white;
 }
 #tripQDescription{
 	position: absolute;
-	top: 520px;
+	top: 75%;
 	left: 180px;    
 	color: white;   
 }

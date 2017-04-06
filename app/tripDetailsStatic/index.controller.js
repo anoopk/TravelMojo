@@ -169,7 +169,8 @@
 		}
 		
 		$scope.ownComment = function(day, id){
-			if(day.comments[id].name == vm.user.username){ //or if administrator
+			
+			if(day.comments && (day.comments[id].name == vm.user.username)){ //or if administrator
 				return true;
 			};				
 			return false;
