@@ -49,8 +49,8 @@
 					</button>	
 				</a>							
 				<img ng-src="{{slide.image}}" style="margin:auto;">
-				<h2><span>{{slide.title}}<br /></h2>
-				<h3><span>{{slide.quickDescription}}<br /></h3>
+				<h2 id="tripTitle"><span><strong>{{slide.title}}</strong><br /></h2>
+				<div id="tripQDescription"><span>{{slide.quickDescription}}<br /></div>
 				<div ng-show="slide.cancelled" id="cancelnote" class="rubber">
 				<div>
 				  Cancelled

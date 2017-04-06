@@ -86,12 +86,23 @@ a.button{
     
    padding: 5px;
 }
-#cancelnote {
+#tripTitle{
    position: absolute;
-   top: 500px;
-   left: 450px; 
-    
-   padding: 5px;
+   top: 480px;
+   left: 180px;     
+   color: white;
+}
+#tripQDescription{
+	position: absolute;
+	top: 520px;
+	left: 180px;    
+	color: white;   
+}
+#cancelnote {
+	position: absolute;
+	top: 500px;
+	left: 450px;     
+	padding: 5px;
 }
 #privatenote {
    position: absolute;
