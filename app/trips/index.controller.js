@@ -152,8 +152,8 @@
 			}
 			
 			$scope.clone = function(trip){
-				trip.createdOn = new Date();			
-				UserService.CreateTrip(trip);
+				$scope.trip.createdOn = new Date();			
+				UserService.CreateTrip($scope.trip);
 				UserService.GetAllTrips().then(function(data){
 					vm.myData = data;				
 				});

@@ -27,6 +27,19 @@
 				}
             });
         }		
+
+		$scope.edit = function(){
+			$state.go('tripDetails', {tripId : $scope.trip._id});
+		}
+
+		$scope.cancel = function(){
+			$state.go('tripDetails', {tripId : $scope.trip._id});
+		}
+
+		$scope.clone = function(){
+			$scope.trip.createdOn = new Date();			
+			UserService.CreateTrip($scope.trip);
+		}
 		
 		$scope.nextTrip = function(){
 			$stateParams.tripId = "58c94d1482bee8178c6edbcb";
@@ -39,8 +52,14 @@
 			$scope.filterBy = filterBy;
 		}
 		
-		$scope.ownComment = function(day, id){
-			
+		$scope.ownTrip = function(){			
+			if($scope.trip.userName == vm.user.username){ //or if administrator
+				return true;
+			};				
+			return false;		
+		}
+		
+		$scope.ownComment = function(day, id){			
 			if(day.comments && (day.comments[id].name == vm.user.username)){ //or if administrator
 				return true;
 			};				
