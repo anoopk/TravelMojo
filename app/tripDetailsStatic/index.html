@@ -23,7 +23,7 @@
   <div class="mdl-cell mdl-cell--4-col">
 	<img style="max-height:350px" ng-src="https://unsplash.it/1350/654" height="100%" width="100%"></img><hr>
 	<div style="padding-left:3%; padding-top:3%; background: linear-gradient(white, white);">
-		<font><strong>Nutshell</strong></font>	</br>
+		<font><strong>In a Nutshell</strong></font>	</br>
 		<div class="content-grid mdl-grid">
 			<div class="mdl-cell mdl-cell--3-col">		
 				<label class="label label-primary">Price</label></br>
@@ -47,9 +47,9 @@
 			</div>
 			<div class="mdl-cell mdl-cell--3-col">		
 				<label class="label label-warning">{{trip.groupSize}}</label></br>
-				<label class="label label-warning">{{trip.budget}}</label></br>
-				<label class="label label-warning">{{trip.rating}}</label></br>
-				<label class="label label-warning">{{trip.difficulty}}</label></br>
+				<label class="label label-warning">{{budgets[trip.budget].name}}</label></br>
+				<label class="label label-warning">{{ratings[trip.rating].name}}</label></br>
+				<label class="label label-warning">{{difficulties[trip.difficulty].name}}</label></br>
 			</div>						
 		</div>		
 	</div><hr>	
@@ -59,7 +59,7 @@
 		<label ng-repeat="tag in trip.tags">
 			<label class="label"><a href="#"><strong>{{tag.text}}</strong></a></label>
 		</label>
-	</div>
+	</div><hr>
 	
   </div>
   <div  style="background: linear-gradient(black, black);" class="content-column mdl-cell mdl-cell--8-col">
@@ -68,8 +68,8 @@
 	<i style="padding-left:3%" class="fa fa-thumbs-up text-danger"></i><font style="padding-left:5px" color="white" size="1">{{trip.votes}}</font>
 	<i style="padding-left:.5%" class="fa fa-envelope text-danger"></i><font color="white" size="1">{{trip.comments.length}}</font>	
 	<i style="padding-left:2.5%" class="fa fa-map-o text-danger"></i>
-	<a href="#"><i style="padding-left:2%" class="fa fa-calendar text-danger"></i></a>
-	<a style="padding-left:25%" href="#">{{trip.url}}</a>	
+	<a href="#"><i style="padding-left:2%" class="fa fa-calendar text-danger" ng-click="nextTrip()"></i></a>
+	<a style="padding-left:20%" href="#">{{trip.url}}</a>	
 	</br>
 	<label><font color="white">{{trip.quickDescription}}</font></label></br>
 	<label><font size="1" color="orange">Created by {{trip.userName}} on {{trip.createdOn | date}}</font></label>
