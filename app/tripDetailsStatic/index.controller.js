@@ -3,18 +3,13 @@
     angular
         .module('app')
         .controller('TripDetailsStatic.IndexController', Controller);
-    function Controller($scope, UserService, TripService, $mdDialog, $state, $stateParams, Upload, $timeout) {
+    
+	function Controller($scope, UserService, TripService, $mdDialog, $state, $stateParams, Upload, $timeout) {
         var vm = this;
         vm.user = null;
-		var now = new Date();
         initController();	
-		$scope.singleDay = {};
-		$scope.oneAtATime = true;			
-		$scope.items = {"description":true, "itinerary":false, "departures":false};		
 		$scope.trip = {};			
-		$scope.trip.itinerary = [];				
-		$scope.trip.departures = [];				
-		$scope.trip.notes = "I do not need any assistance at this point in time.";		
+		//$scope.trip.notes = "I do not need any assistance at this point in time.";		
 		$scope.trip.length = 0;
         function initController() {	
 			$scope.activites = [{id:1, name : 'Suicide Bombing'}, {id:2, name : 'Paragliding'}, {id:3, name : 'Diving'}, {id:4, name : 'Trekking'}];
@@ -36,7 +31,7 @@
 		$scope.nextTrip = function(){
 			$stateParams.tripId = "58c94d1482bee8178c6edbcb";
 			UserService.GetTrip(vm.user.username, "58c94d1482bee8178c6edbcb").then(function (trip){
-			$scope.trip = trip;			
+				$scope.trip = trip;			
 			});
 		}
 			
